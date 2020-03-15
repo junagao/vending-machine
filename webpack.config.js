@@ -30,7 +30,8 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     alias: {
       'react-dom': '@hot-loader/react-dom',
     },
