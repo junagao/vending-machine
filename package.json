@@ -5,8 +5,8 @@
   "author": "Juliane Nagao <julianens@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production",
+    "dev": "NODE_ENV='development' webpack-dev-server --hot",
+    "build": "NODE_ENV='production' webpack",
     "lint": "eslint ./src --cache && echo \"No linting errors\"",
     "lint:fix": "eslint ./src --fix",
     "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\""

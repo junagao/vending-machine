@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+const isDevelopment = process.env.NODE_ENV === 'development';
+
 const htmlPlugin = new HtmlWebpackPlugin({
   template: 'src/index.html',
   filename: 'index.html',
@@ -11,10 +13,11 @@ const htmlPlugin = new HtmlWebpackPlugin({
 const cleanWebpackPlugin = new CleanWebpackPlugin();
 
 module.exports = {
+  mode: isDevelopment ? 'development' : 'production',
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
+    path: path.join(__dirname, 'dist'),
+    filename: isDevelopment ? '[name].js' : '[name].[hash].js',
     publicPath: '/',
   },
   module: {
@@ -37,4 +40,5 @@ module.exports = {
     historyApiFallback: true,
   },
   plugins: [htmlPlugin, cleanWebpackPlugin],
+  devtool: isDevelopment ? 'eval-source-map' : 'source-map',
 };
