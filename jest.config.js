@@ -1,6 +1,7 @@
 module.exports = {
   verbose: true,
-  setupFilesAfterEnv: ['<rootDir>src/setupEnzyme.js'],
+  setupFilesAfterEnv: ['<rootDir>/enzyme.config.js'],
+  testPathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/'],
   transform: {
     '^.+\\.js$': 'babel-jest',
     '\\.(jpg|jpeg|png|gif|eot|otf|svg|ttf|woff|woff2)$':
