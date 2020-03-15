@@ -27,6 +27,15 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader'],
       },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        loader: 'file-loader',
+        options: {
+          name: isDevelopment
+            ? '[path][name].[ext]?[hash:8]'
+            : '[hash:8].[ext]',
+        },
+      },
     ],
   },
   resolve: {
