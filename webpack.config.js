@@ -1,10 +1,13 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const htmlPlugin = new HtmlWebpackPlugin({
   template: 'src/index.html',
   filename: 'index.html',
   inject: false,
 });
+
+const cleanWebpackPlugin = new CleanWebpackPlugin();
 
 module.exports = {
   entry: './src/index.js',
@@ -29,5 +32,5 @@ module.exports = {
     contentBase: './dist',
     historyApiFallback: true,
   },
-  plugins: [htmlPlugin],
+  plugins: [htmlPlugin, cleanWebpackPlugin],
 };
