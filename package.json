@@ -1,0 +1,7 @@
+{
+  "name": "vending-machine",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Juliane Nagao <julianens@gmail.com>",
+  "license": "MIT"
+}
