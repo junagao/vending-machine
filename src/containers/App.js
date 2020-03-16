@@ -144,12 +144,11 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  products: state.products,
-  walletAmount: state.walletAmount,
-  insertedCoinsAmount: state.insertedCoinsAmount,
-  isDragging: state.isDragging,
-  isDropZone: state.isDropZone,
-  coinError: state.coinError,
+  walletAmount: state.coin.walletAmount,
+  insertedCoinsAmount: state.coin.insertedCoinsAmount,
+  isDragging: state.coin.isDragging,
+  isDropZone: state.coin.isDropZone,
+  coinError: state.coin.coinError,
 });
 
 const mapDispatchToProps = {

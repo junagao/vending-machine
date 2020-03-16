@@ -1,10 +1,12 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import CoinSlot from 'components/CoinSlot';
-import VendingMachineScreen from 'components/VendingMachineScreen';
-import CollectProductButton from 'components/CollectProductButton';
+import {
+  CoinSlot,
+  VendingMachineScreen,
+  CollectProductButton,
+} from 'components';
 
 const VendingMachineContainer = styled.div`
   width: 30rem;
