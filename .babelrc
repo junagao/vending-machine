@@ -4,6 +4,8 @@
     "@babel/preset-react"
   ],
   "plugins": [
+    ["babel-plugin-styled-components"],
+    ["@babel/plugin-proposal-class-properties", { "loose": true }],
     "react-hot-loader/babel",
     ["module-resolver", { "root": ["./src"] }]
   ]

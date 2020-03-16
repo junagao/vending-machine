@@ -3,3 +3,4 @@ export { default as CollectProductButton } from 'components/CollectProductButton
 export { default as VendingMachine } from 'components/VendingMachine';
 export { default as VendingMachineScreen } from 'components/VendingMachineScreen';
 export { default as Wallet } from 'components/Wallet';
+export { default as Header } from 'components/Header';
