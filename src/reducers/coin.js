@@ -9,6 +9,7 @@ import {
 const initialState = {
   walletAmount: 20,
   insertedCoinsAmount: 0,
+  insertedCoins: [],
   isDragging: false,
   isDropZone: false,
   coinError: '',
@@ -29,6 +30,7 @@ export default (state = initialState, action) => {
         ...state,
         walletAmount: updatedWalletAmount,
         insertedCoinsAmount: updatedInsertedCoinsAmount,
+        insertedCoins: [...state.insertedCoins, action.value],
         isDropZone: false,
       };
     }
