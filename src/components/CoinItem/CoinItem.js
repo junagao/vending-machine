@@ -29,7 +29,6 @@ const CoinItem = ({
   isDragging,
 }) => (
   <CoinItemLi
-    key={id}
     id={id}
     draggable
     onDragStart={onDragStart}

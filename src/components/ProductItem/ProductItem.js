@@ -23,7 +23,7 @@ const ProductDetail = styled.p`
 `;
 
 const ProductItem = ({ id, name, img, price, onSelectProduct }) => (
-  <ProductItemLi key={id}>
+  <ProductItemLi>
     <ProductItemButton
       onClick={() => onSelectProduct(name, img, id)}
       type="button"

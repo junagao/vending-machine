@@ -15,6 +15,7 @@ const ProductList = ({ products, onSelectProduct }) => (
   <ProductListUl>
     {products.map(({ id, name, img, price }) => (
       <ProductItem
+        key={id}
         id={id}
         name={name}
         img={img}
