@@ -2,8 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const CoinSlotContainer = styled.div`
-  width: 0.75rem;
+const InsertCoinInstruction = styled.p`
+  color: #8a0b15;
+`;
+
+const CoinSlotDispenser = styled.div`
+  width: 1rem;
   height: 3.5rem;
   border: ${({ isDropZone }) =>
     isDropZone ? `2px dashed #8a0c15` : `2px solid #8a0c15`};
@@ -19,14 +23,17 @@ const CoinSlot = ({
   onDragLeave,
   isDropZone,
 }) => (
-  <CoinSlotContainer
-    id="coin-slot"
-    onDrop={onDrop}
-    onDragOver={onDragOver}
-    onDragEnter={onDragEnter}
-    onDragLeave={onDragLeave}
-    isDropZone={isDropZone}
-  />
+  <>
+    <InsertCoinInstruction>Insert coin here:</InsertCoinInstruction>
+    <CoinSlotDispenser
+      id="coin-slot"
+      onDrop={onDrop}
+      onDragOver={onDragOver}
+      onDragEnter={onDragEnter}
+      onDragLeave={onDragLeave}
+      isDropZone={isDropZone}
+    />
+  </>
 );
 
 CoinSlot.propTypes = {
