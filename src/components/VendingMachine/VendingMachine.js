@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import {
-  CoinSlot,
-  VendingMachineScreen,
-  CollectProductButton,
-} from 'components';
+import { CoinSlot, VendingMachineScreen, CollectProduct } from 'components';
 
 const VendingMachineContainer = styled.div`
   width: 30rem;
@@ -50,7 +46,7 @@ const VendingMachine = ({
       products={products}
       onSelectProduct={onSelectProduct}
     />
-    <CollectProductButton
+    <CollectProduct
       selectedProductName={selectedProductName}
       selectedProductImg={selectedProductImg}
       onCollectProduct={onCollectProduct}

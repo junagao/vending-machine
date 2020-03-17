@@ -2,6 +2,7 @@ import {
   SELECT_PRODUCT,
   UPDATE_PRODUCT_STOCK,
   COLLECT_PRODUCT,
+  SET_IS_PRODUCT_COLLECTED,
 } from 'actions/types';
 import products from 'data/products';
 
@@ -36,8 +37,13 @@ export default (state = initialState, action) => {
     case COLLECT_PRODUCT:
       return {
         ...state,
-        isCollected: true,
         collectedProducts: [...state.collectedProducts, action.product],
+        isCollected: true,
+      };
+    case SET_IS_PRODUCT_COLLECTED:
+      return {
+        ...state,
+        isCollected: action.bool,
       };
     default:
       return state;
