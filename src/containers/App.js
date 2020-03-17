@@ -13,6 +13,7 @@ import {
 import {
   selectProduct as selectProductAction,
   updateProductStock as updateProductStockAction,
+  collectProduct as collectProductAction,
 } from 'actions/product';
 
 import { Header, VendingMachine, Wallet } from 'components';
@@ -99,7 +100,7 @@ class App extends React.Component {
     e.stopPropagation();
   };
 
-  handleSelectProduct = (name, img, id) => {
+  onSelectProduct = (name, img, id) => {
     const {
       selectProduct,
       insertedCoinsAmount,
@@ -139,6 +140,8 @@ class App extends React.Component {
       selectedProductName,
       selectedProductImg,
       products,
+      collectProduct,
+      isCollected,
     } = this.props;
 
     return (
@@ -154,9 +157,11 @@ class App extends React.Component {
             isDropZone={isDropZone}
             insertedCoinsAmount={insertedCoinsAmount}
             products={products}
-            onSelectProduct={this.handleSelectProduct}
+            onSelectProduct={this.onSelectProduct}
             selectedProductName={selectedProductName}
             selectedProductImg={selectedProductImg}
+            onCollectProduct={collectProduct}
+            isCollected={isCollected}
           />
           <Wallet
             coins={coins}
@@ -198,6 +203,8 @@ App.propTypes = {
     }),
   ).isRequired,
   updateInsertedCoinAmount: PropTypes.func.isRequired,
+  collectProduct: PropTypes.func.isRequired,
+  isCollected: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -209,6 +216,7 @@ const mapStateToProps = (state) => ({
   selectedProductName: state.product.selectedProductName,
   selectedProductImg: state.product.selectedProductImg,
   products: state.product.products,
+  isCollected: state.product.isCollected,
 });
 
 const mapDispatchToProps = {
@@ -219,6 +227,7 @@ const mapDispatchToProps = {
   selectProduct: selectProductAction,
   updateProductStock: updateProductStockAction,
   updateInsertedCoinAmount: updateInsertedCoinAmountAction,
+  collectProduct: collectProductAction,
 };
 
 export default hot(connect(mapStateToProps, mapDispatchToProps)(App));

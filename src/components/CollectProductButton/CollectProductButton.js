@@ -15,15 +15,29 @@ const ProductImg = styled.img`
   transform: rotate(270deg);
 `;
 
-const CollectProductButton = ({ selectedProductName, selectedProductImg }) => (
+const CollectProductButton = ({
+  selectedProductName,
+  selectedProductImg,
+  onCollectProduct,
+  isCollected,
+}) => (
   <CollectProductButtonContainer>
-    <ProductImg width="35" src={selectedProductImg} alt={selectedProductName} />
+    {!isCollected ? (
+      <ProductImg
+        width="35"
+        src={selectedProductImg}
+        alt={selectedProductName}
+        onClick={() => onCollectProduct(selectedProductName)}
+      />
+    ) : null}
   </CollectProductButtonContainer>
 );
 
 CollectProductButton.propTypes = {
   selectedProductName: PropTypes.string.isRequired,
   selectedProductImg: PropTypes.string.isRequired,
+  onCollectProduct: PropTypes.func.isRequired,
+  isCollected: PropTypes.bool.isRequired,
 };
 
 export default CollectProductButton;

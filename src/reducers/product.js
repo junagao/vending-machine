@@ -1,10 +1,16 @@
-import { SELECT_PRODUCT, UPDATE_PRODUCT_STOCK } from 'actions/types';
+import {
+  SELECT_PRODUCT,
+  UPDATE_PRODUCT_STOCK,
+  COLLECT_PRODUCT,
+} from 'actions/types';
 import products from 'data/products';
 
 const initialState = {
+  products,
   selectedProductName: '',
   selectedProductImg: '',
-  products,
+  isCollected: false,
+  collectedProducts: [],
 };
 
 export default (state = initialState, action) => {
@@ -27,6 +33,12 @@ export default (state = initialState, action) => {
         products: updatedProducts,
       };
     }
+    case COLLECT_PRODUCT:
+      return {
+        ...state,
+        isCollected: true,
+        collectedProducts: [...state.collectedProducts, action.product],
+      };
     default:
       return state;
   }
