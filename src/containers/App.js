@@ -9,6 +9,7 @@ import {
   setIsCoinDropZone as setIsCoinDropZoneAction,
   setCoinError as setCoinErrorAction,
   updateInsertedCoinAmount as updateInsertedCoinAmountAction,
+  collectCoinRefund as collectCoinRefundAction,
 } from 'actions/coin';
 import {
   selectProduct as selectProductAction,
@@ -104,7 +105,7 @@ class App extends React.Component {
   onSelectProduct = (name, img, id) => {
     const {
       selectProduct,
-      insertedCoinsAmount,
+      machineCoinsAmount,
       setCoinError,
       updateProductStock,
       products,
@@ -116,13 +117,13 @@ class App extends React.Component {
     const selectedProductStock = products.find((p) => p.id === id).currentStock;
 
     if (
-      insertedCoinsAmount > 0 &&
-      selectedProductPrice <= insertedCoinsAmount &&
+      machineCoinsAmount > 0 &&
+      selectedProductPrice <= machineCoinsAmount &&
       selectedProductStock > 0
     ) {
       selectProduct(name, img);
       updateProductStock(id, 1);
-      updateInsertedCoinAmount(insertedCoinsAmount - selectedProductPrice);
+      updateInsertedCoinAmount(machineCoinsAmount - selectedProductPrice);
       setIsProductCollected(false);
     } else if (selectedProductStock === 0) {
       setCoinError(`Out of stock`);
@@ -136,7 +137,7 @@ class App extends React.Component {
   render() {
     const {
       walletAmount,
-      insertedCoinsAmount,
+      machineCoinsAmount,
       isDragging,
       isDropZone,
       coinError,
@@ -145,6 +146,7 @@ class App extends React.Component {
       products,
       isCollected,
       collectProduct,
+      collectCoinRefund,
     } = this.props;
 
     return (
@@ -158,13 +160,14 @@ class App extends React.Component {
             onDragEnter={this.onDragEnter}
             onDragLeave={this.onDragLeave}
             isDropZone={isDropZone}
-            insertedCoinsAmount={insertedCoinsAmount}
+            machineCoinsAmount={machineCoinsAmount}
             products={products}
             onSelectProduct={this.onSelectProduct}
             selectedProductName={selectedProductName}
             selectedProductImg={selectedProductImg}
             onCollectProduct={collectProduct}
             isCollected={isCollected}
+            onCollectCoinRefund={collectCoinRefund}
           />
           <Wallet
             coins={coins}
@@ -183,7 +186,7 @@ class App extends React.Component {
 
 App.propTypes = {
   insertCoin: PropTypes.func.isRequired,
-  insertedCoinsAmount: PropTypes.number.isRequired,
+  machineCoinsAmount: PropTypes.number.isRequired,
   isDragging: PropTypes.bool.isRequired,
   isDropZone: PropTypes.bool.isRequired,
   walletAmount: PropTypes.number.isRequired,
@@ -209,11 +212,12 @@ App.propTypes = {
   collectProduct: PropTypes.func.isRequired,
   isCollected: PropTypes.bool.isRequired,
   setIsProductCollected: PropTypes.func.isRequired,
+  collectCoinRefund: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   walletAmount: state.coin.walletAmount,
-  insertedCoinsAmount: state.coin.insertedCoinsAmount,
+  machineCoinsAmount: state.coin.machineCoinsAmount,
   isDragging: state.coin.isDragging,
   isDropZone: state.coin.isDropZone,
   coinError: state.coin.coinError,
@@ -233,6 +237,7 @@ const mapDispatchToProps = {
   updateInsertedCoinAmount: updateInsertedCoinAmountAction,
   collectProduct: collectProductAction,
   setIsProductCollected: setIsProductCollectedAction,
+  collectCoinRefund: collectCoinRefundAction,
 };
 
 export default hot(connect(mapStateToProps, mapDispatchToProps)(App));

@@ -4,6 +4,7 @@ import {
   SET_IS_COIN_DROPZONE,
   SET_COIN_ERROR,
   UPDATE_INSERTED_COIN_AMOUNT,
+  COLLECT_COIN_REFUND,
 } from 'actions/types';
 
 export const insertCoin = (value) => ({
@@ -26,5 +27,10 @@ export const setCoinError = (message) => ({
 
 export const updateInsertedCoinAmount = (value) => ({
   type: UPDATE_INSERTED_COIN_AMOUNT,
+  value,
+});
+
+export const collectCoinRefund = (value) => ({
+  type: COLLECT_COIN_REFUND,
   value,
 });
