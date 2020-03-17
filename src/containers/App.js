@@ -8,7 +8,12 @@ import {
   setIsDraggingCoin as setIsDraggingCoinAction,
   setIsCoinDropZone as setIsCoinDropZoneAction,
   setCoinError as setCoinErrorAction,
+  updateInsertedCoinAmount as updateInsertedCoinAmountAction,
 } from 'actions/coin';
+import {
+  selectProduct as selectProductAction,
+  updateProductStock as updateProductStockAction,
+} from 'actions/product';
 
 import { Header, VendingMachine, Wallet } from 'components';
 import coins from 'data/coins';
@@ -94,6 +99,36 @@ class App extends React.Component {
     e.stopPropagation();
   };
 
+  handleSelectProduct = (name, img, id) => {
+    const {
+      selectProduct,
+      insertedCoinsAmount,
+      setCoinError,
+      updateProductStock,
+      products,
+      updateInsertedCoinAmount,
+    } = this.props;
+
+    const selectedProductPrice = products.find((p) => p.id === id).price;
+    const selectedProductStock = products.find((p) => p.id === id).currentStock;
+
+    if (
+      insertedCoinsAmount > 0 &&
+      selectedProductPrice <= insertedCoinsAmount &&
+      selectedProductStock > 0
+    ) {
+      selectProduct(name, img);
+      updateProductStock(id, 1);
+      updateInsertedCoinAmount(insertedCoinsAmount - selectedProductPrice);
+    } else if (selectedProductStock === 0) {
+      setCoinError(`Out of stock`);
+      setTimeout(() => setCoinError(''), 2500);
+    } else {
+      setCoinError(`Not enough deposited. Price is ${selectedProductPrice} €.`);
+      setTimeout(() => setCoinError(''), 2500);
+    }
+  };
+
   render() {
     const {
       walletAmount,
@@ -101,6 +136,9 @@ class App extends React.Component {
       isDragging,
       isDropZone,
       coinError,
+      selectedProductName,
+      selectedProductImg,
+      products,
     } = this.props;
 
     return (
@@ -115,6 +153,10 @@ class App extends React.Component {
             onDragLeave={this.onDragLeave}
             isDropZone={isDropZone}
             insertedCoinsAmount={insertedCoinsAmount}
+            products={products}
+            onSelectProduct={this.handleSelectProduct}
+            selectedProductName={selectedProductName}
+            selectedProductImg={selectedProductImg}
           />
           <Wallet
             coins={coins}
@@ -141,6 +183,21 @@ App.propTypes = {
   setIsCoinDropZone: PropTypes.func.isRequired,
   setCoinError: PropTypes.func.isRequired,
   coinError: PropTypes.string.isRequired,
+  selectProduct: PropTypes.func.isRequired,
+  selectedProductName: PropTypes.string.isRequired,
+  selectedProductImg: PropTypes.string.isRequired,
+  updateProductStock: PropTypes.func.isRequired,
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      img: PropTypes.string,
+      price: PropTypes.number,
+      currentStock: PropTypes.number,
+      stockCapacity: PropTypes.number,
+    }),
+  ).isRequired,
+  updateInsertedCoinAmount: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -149,6 +206,9 @@ const mapStateToProps = (state) => ({
   isDragging: state.coin.isDragging,
   isDropZone: state.coin.isDropZone,
   coinError: state.coin.coinError,
+  selectedProductName: state.product.selectedProductName,
+  selectedProductImg: state.product.selectedProductImg,
+  products: state.product.products,
 });
 
 const mapDispatchToProps = {
@@ -156,6 +216,9 @@ const mapDispatchToProps = {
   setIsDraggingCoin: setIsDraggingCoinAction,
   setIsCoinDropZone: setIsCoinDropZoneAction,
   setCoinError: setCoinErrorAction,
+  selectProduct: selectProductAction,
+  updateProductStock: updateProductStockAction,
+  updateInsertedCoinAmount: updateInsertedCoinAmountAction,
 };
 
 export default hot(connect(mapStateToProps, mapDispatchToProps)(App));

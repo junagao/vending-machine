@@ -19,6 +19,8 @@ const VendingMachineContainer = styled.div`
   justify-content: space-between;
   padding: 1rem;
   margin-right: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
 `;
 
 const VendingMachine = ({
@@ -28,6 +30,10 @@ const VendingMachine = ({
   onDragLeave,
   isDropZone,
   insertedCoinsAmount,
+  products,
+  onSelectProduct,
+  selectedProductName,
+  selectedProductImg,
 }) => (
   <VendingMachineContainer>
     <CoinSlot
@@ -37,8 +43,15 @@ const VendingMachine = ({
       onDragLeave={onDragLeave}
       isDropZone={isDropZone}
     />
-    <VendingMachineScreen insertedCoinsAmount={insertedCoinsAmount} />
-    <CollectProductButton />
+    <VendingMachineScreen
+      insertedCoinsAmount={insertedCoinsAmount}
+      products={products}
+      onSelectProduct={onSelectProduct}
+    />
+    <CollectProductButton
+      selectedProductName={selectedProductName}
+      selectedProductImg={selectedProductImg}
+    />
   </VendingMachineContainer>
 );
 
@@ -49,6 +62,19 @@ VendingMachine.propTypes = {
   onDragOver: PropTypes.func.isRequired,
   onDrop: PropTypes.func.isRequired,
   insertedCoinsAmount: PropTypes.number.isRequired,
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      img: PropTypes.string,
+      price: PropTypes.number,
+      currentStock: PropTypes.number,
+      stockCapacity: PropTypes.number,
+    }),
+  ).isRequired,
+  onSelectProduct: PropTypes.func.isRequired,
+  selectedProductName: PropTypes.string.isRequired,
+  selectedProductImg: PropTypes.string.isRequired,
 };
 
 export default VendingMachine;
