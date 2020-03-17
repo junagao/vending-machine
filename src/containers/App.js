@@ -3,23 +3,17 @@ import { hot } from 'react-hot-loader/root';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {
-  insertCoin as insertCoinAction,
-  setIsDraggingCoin as setIsDraggingCoinAction,
-  setIsCoinDropZone as setIsCoinDropZoneAction,
-  setCoinError as setCoinErrorAction,
-  updateInsertedCoinAmount as updateInsertedCoinAmountAction,
-  collectCoinRefund as collectCoinRefundAction,
-} from 'actions/coin';
-import {
-  selectProduct as selectProductAction,
-  updateProductStock as updateProductStockAction,
-  collectProduct as collectProductAction,
-  setIsProductCollected as setIsProductCollectedAction,
-} from 'actions/product';
 
-import { Header, VendingMachine, Wallet } from 'components';
-import coins from 'data/coins';
+import * as coinActions from 'actions/coin';
+import * as productActions from 'actions/product';
+
+import {
+  Header,
+  VendingMachine,
+  Wallet,
+  AdminControllers,
+  ErrorMessage,
+} from 'components';
 
 const AppContainer = styled.div`
   margin: 0 auto;
@@ -34,26 +28,25 @@ const AppContainer = styled.div`
   }
 `;
 
-const MainContainer = styled.main`
+const Main = styled.main`
   display: flex;
   justify-content: center;
   margin-top: 1.5rem;
 `;
 
-const CoinErrorContainer = styled.div`
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #c50d1a;
-  background-color: #eee;
-  border: 1px solid #c50d1a;
-  border-radius: 0.25rem;
-  padding: 1rem;
-  font-size: 0.9rem;
-  margin-top: 0.25rem;
+const UserControls = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 class App extends React.Component {
+  componentDidMount() {
+    const { getCoins, getWalletAmount, getProducts } = this.props;
+    getCoins();
+    getWalletAmount();
+    getProducts();
+  }
+
   onDrop = (e) => {
     const { walletAmount, insertCoin, setCoinError } = this.props;
     e.preventDefault();
@@ -136,6 +129,7 @@ class App extends React.Component {
 
   render() {
     const {
+      coins,
       walletAmount,
       machineCoinsAmount,
       isDragging,
@@ -147,13 +141,14 @@ class App extends React.Component {
       isCollected,
       collectProduct,
       collectCoinRefund,
+      refillCoinsQuantity,
     } = this.props;
 
     return (
       <AppContainer>
-        {coinError && <CoinErrorContainer>{coinError}</CoinErrorContainer>}
+        <ErrorMessage errorMessage={coinError} />
         <Header />
-        <MainContainer>
+        <Main>
           <VendingMachine
             onDrop={this.onDrop}
             onDragOver={this.onDragOver}
@@ -169,22 +164,39 @@ class App extends React.Component {
             isCollected={isCollected}
             onCollectCoinRefund={collectCoinRefund}
           />
-          <Wallet
-            coins={coins}
-            walletAmount={walletAmount}
-            onDragStart={this.onDragStart}
-            onDragEnd={this.onDragEnd}
-            onDragOver={this.noAllowDrop}
-            isDragging={isDragging}
-            coinError={coinError}
-          />
-        </MainContainer>
+          <UserControls>
+            <Wallet
+              coins={coins}
+              walletAmount={walletAmount}
+              onDragStart={this.onDragStart}
+              onDragEnd={this.onDragEnd}
+              onDragOver={this.noAllowDrop}
+              isDragging={isDragging}
+              coinError={coinError}
+            />
+            <AdminControllers
+              coins={coins}
+              onRefillCoinsQuantity={refillCoinsQuantity}
+            />
+          </UserControls>
+        </Main>
       </AppContainer>
     );
   }
 }
 
 App.propTypes = {
+  getCoins: PropTypes.func.isRequired,
+  getWalletAmount: PropTypes.func.isRequired,
+  getProducts: PropTypes.func.isRequired,
+  coins: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      value: PropTypes.number,
+      quantity: PropTypes.number,
+    }),
+  ).isRequired,
   insertCoin: PropTypes.func.isRequired,
   machineCoinsAmount: PropTypes.number.isRequired,
   isDragging: PropTypes.bool.isRequired,
@@ -213,31 +225,25 @@ App.propTypes = {
   isCollected: PropTypes.bool.isRequired,
   setIsProductCollected: PropTypes.func.isRequired,
   collectCoinRefund: PropTypes.func.isRequired,
+  refillCoinsQuantity: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
+  coins: state.coin.coins,
   walletAmount: state.coin.walletAmount,
   machineCoinsAmount: state.coin.machineCoinsAmount,
   isDragging: state.coin.isDragging,
   isDropZone: state.coin.isDropZone,
   coinError: state.coin.coinError,
+  products: state.product.products,
   selectedProductName: state.product.selectedProductName,
   selectedProductImg: state.product.selectedProductImg,
-  products: state.product.products,
   isCollected: state.product.isCollected,
 });
 
 const mapDispatchToProps = {
-  insertCoin: insertCoinAction,
-  setIsDraggingCoin: setIsDraggingCoinAction,
-  setIsCoinDropZone: setIsCoinDropZoneAction,
-  setCoinError: setCoinErrorAction,
-  selectProduct: selectProductAction,
-  updateProductStock: updateProductStockAction,
-  updateInsertedCoinAmount: updateInsertedCoinAmountAction,
-  collectProduct: collectProductAction,
-  setIsProductCollected: setIsProductCollectedAction,
-  collectCoinRefund: collectCoinRefundAction,
+  ...coinActions,
+  ...productActions,
 };
 
 export default hot(connect(mapStateToProps, mapDispatchToProps)(App));

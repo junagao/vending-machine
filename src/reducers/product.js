@@ -1,13 +1,13 @@
 import {
+  GET_PRODUCTS,
   SELECT_PRODUCT,
   UPDATE_PRODUCT_STOCK,
   COLLECT_PRODUCT,
   SET_IS_PRODUCT_COLLECTED,
 } from 'actions/types';
-import products from 'data/products';
 
 const initialState = {
-  products,
+  products: [],
   selectedProductName: '',
   selectedProductImg: '',
   isCollected: false,
@@ -16,13 +16,17 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SELECT_PRODUCT: {
+    case GET_PRODUCTS:
+      return {
+        ...state,
+        products: action.productsList,
+      };
+    case SELECT_PRODUCT:
       return {
         ...state,
         selectedProductName: action.name,
         selectedProductImg: action.img,
       };
-    }
     case UPDATE_PRODUCT_STOCK: {
       const updatedProducts = state.products.map((product) =>
         product.id === action.id

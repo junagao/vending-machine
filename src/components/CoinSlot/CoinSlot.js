@@ -2,8 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+const CoinSlotContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 const InsertCoinInstruction = styled.p`
-  color: #8a0b15;
+  position: relative;
+  color: #eee;
+  background-color: #8a0b15;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+  margin-right: 0.75rem;
+  width: 7.5rem;
+  height: 2rem;
+  padding: 0.5rem;
+
+  &::before {
+    position: absolute;
+    content: '';
+    width: 0.65rem;
+    height: 0.65rem;
+    top: 0.65rem;
+    right: -0.3rem;
+    transform: rotate(45deg);
+    background-color: #8a0b15;
+  }
 `;
 
 const CoinSlotDispenser = styled.div`
@@ -23,8 +48,8 @@ const CoinSlot = ({
   onDragLeave,
   isDropZone,
 }) => (
-  <>
-    <InsertCoinInstruction>Insert coin here:</InsertCoinInstruction>
+  <CoinSlotContainer>
+    <InsertCoinInstruction>Drag coin here &gt;</InsertCoinInstruction>
     <CoinSlotDispenser
       id="coin-slot"
       onDrop={onDrop}
@@ -33,15 +58,15 @@ const CoinSlot = ({
       onDragLeave={onDragLeave}
       isDropZone={isDropZone}
     />
-  </>
+  </CoinSlotContainer>
 );
 
 CoinSlot.propTypes = {
-  isDropZone: PropTypes.bool.isRequired,
+  onDrop: PropTypes.func.isRequired,
+  onDragOver: PropTypes.func.isRequired,
   onDragEnter: PropTypes.func.isRequired,
   onDragLeave: PropTypes.func.isRequired,
-  onDragOver: PropTypes.func.isRequired,
-  onDrop: PropTypes.func.isRequired,
+  isDropZone: PropTypes.bool.isRequired,
 };
 
 export default CoinSlot;
