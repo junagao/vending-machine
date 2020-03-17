@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { CoinSlot, VendingMachineScreen, CollectProduct } from 'components';
+import {
+  CoinSlot,
+  VendingMachineScreen,
+  CollectProduct,
+  CollectRefund,
+} from 'components';
 
 const VendingMachineContainer = styled.div`
   width: 30rem;
@@ -25,13 +30,14 @@ const VendingMachine = ({
   onDragEnter,
   onDragLeave,
   isDropZone,
-  insertedCoinsAmount,
+  machineCoinsAmount,
   products,
   onSelectProduct,
   selectedProductName,
   selectedProductImg,
   onCollectProduct,
   isCollected,
+  onCollectCoinRefund,
 }) => (
   <VendingMachineContainer>
     <CoinSlot
@@ -42,9 +48,13 @@ const VendingMachine = ({
       isDropZone={isDropZone}
     />
     <VendingMachineScreen
-      insertedCoinsAmount={insertedCoinsAmount}
+      machineCoinsAmount={machineCoinsAmount}
       products={products}
       onSelectProduct={onSelectProduct}
+    />
+    <CollectRefund
+      onCollectCoinRefund={onCollectCoinRefund}
+      machineCoinsAmount={machineCoinsAmount}
     />
     <CollectProduct
       selectedProductName={selectedProductName}
@@ -61,7 +71,7 @@ VendingMachine.propTypes = {
   onDragLeave: PropTypes.func.isRequired,
   onDragOver: PropTypes.func.isRequired,
   onDrop: PropTypes.func.isRequired,
-  insertedCoinsAmount: PropTypes.number.isRequired,
+  machineCoinsAmount: PropTypes.number.isRequired,
   products: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -77,6 +87,7 @@ VendingMachine.propTypes = {
   selectedProductImg: PropTypes.string.isRequired,
   onCollectProduct: PropTypes.func.isRequired,
   isCollected: PropTypes.bool.isRequired,
+  onCollectCoinRefund: PropTypes.func.isRequired,
 };
 
 export default VendingMachine;

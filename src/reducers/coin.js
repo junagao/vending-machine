@@ -4,11 +4,12 @@ import {
   SET_IS_COIN_DROPZONE,
   SET_COIN_ERROR,
   UPDATE_INSERTED_COIN_AMOUNT,
+  COLLECT_COIN_REFUND,
 } from 'actions/types';
 
 const initialState = {
   walletAmount: 20,
-  insertedCoinsAmount: 0,
+  machineCoinsAmount: 0,
   insertedCoins: [],
   isDragging: false,
   isDropZone: false,
@@ -22,14 +23,14 @@ export default (state = initialState, action) => {
       const updatedWalletAmount = parseFloat(
         (state.walletAmount - coinValue).toFixed(2),
       );
-      const updatedInsertedCoinsAmount = parseFloat(
-        (state.insertedCoinsAmount + coinValue).toFixed(2),
+      const updatedmachineCoinsAmount = parseFloat(
+        (state.machineCoinsAmount + coinValue).toFixed(2),
       );
 
       return {
         ...state,
         walletAmount: updatedWalletAmount,
-        insertedCoinsAmount: updatedInsertedCoinsAmount,
+        machineCoinsAmount: updatedmachineCoinsAmount,
         insertedCoins: [...state.insertedCoins, action.value],
         isDropZone: false,
       };
@@ -50,12 +51,17 @@ export default (state = initialState, action) => {
         coinError: action.message,
         isDropZone: false,
       };
-    case UPDATE_INSERTED_COIN_AMOUNT: {
+    case UPDATE_INSERTED_COIN_AMOUNT:
       return {
         ...state,
-        insertedCoinsAmount: action.value,
+        machineCoinsAmount: action.value,
       };
-    }
+    case COLLECT_COIN_REFUND:
+      return {
+        ...state,
+        machineCoinsAmount: state.machineCoinsAmount - action.value,
+        walletAmount: state.walletAmount + action.value,
+      };
     default:
       return state;
   }

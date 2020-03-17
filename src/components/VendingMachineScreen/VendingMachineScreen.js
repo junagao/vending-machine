@@ -9,7 +9,7 @@ const VendingMachineScreenContainer = styled.div`
   height: 20rem;
   background-color: #eee;
   border-radius: 0.25rem;
-  margin-bottom: 10rem;
+  margin-bottom: 1rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -23,20 +23,20 @@ const Display = styled.p`
 `;
 
 const VendingMachineScreen = ({
-  insertedCoinsAmount,
+  machineCoinsAmount,
   products,
   onSelectProduct,
 }) => (
   <VendingMachineScreenContainer>
-    {insertedCoinsAmount ? (
-      <Display>Deposited: {insertedCoinsAmount} €</Display>
+    {machineCoinsAmount ? (
+      <Display>Deposited: {machineCoinsAmount} €</Display>
     ) : null}
     <ProductList products={products} onSelectProduct={onSelectProduct} />
   </VendingMachineScreenContainer>
 );
 
 VendingMachineScreen.propTypes = {
-  insertedCoinsAmount: PropTypes.number.isRequired,
+  machineCoinsAmount: PropTypes.number.isRequired,
   products: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
