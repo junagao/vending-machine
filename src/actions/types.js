@@ -1,3 +1,6 @@
+export const GET_COINS = 'GET_COINS';
+export const GET_WALLET_AMOUNT = 'GET_WALLET_AMOUNT';
+export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const INSERT_COIN = 'INSERT_COIN';
 export const SET_IS_DRAGGING_COIN = 'SET_IS_DRAGGING_COIN';
 export const SET_IS_COIN_DROPZONE = 'SET_IS_COIN_DROPZONE';

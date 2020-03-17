@@ -1,4 +1,6 @@
 import {
+  GET_COINS,
+  GET_WALLET_AMOUNT,
   INSERT_COIN,
   SET_IS_DRAGGING_COIN,
   SET_IS_COIN_DROPZONE,
@@ -8,7 +10,8 @@ import {
 } from 'actions/types';
 
 const initialState = {
-  walletAmount: 20,
+  coins: [],
+  walletAmount: 0,
   machineCoinsAmount: 0,
   insertedCoins: [],
   isDragging: false,
@@ -18,19 +21,28 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case GET_COINS:
+      return {
+        ...state,
+        coins: action.coinsList,
+      };
+    case GET_WALLET_AMOUNT:
+      return {
+        ...state,
+        walletAmount: action.walletAmount,
+      };
     case INSERT_COIN: {
       const coinValue = parseFloat(action.value);
       const updatedWalletAmount = parseFloat(
         (state.walletAmount - coinValue).toFixed(2),
       );
-      const updatedmachineCoinsAmount = parseFloat(
+      const updatedMachineCoinsAmount = parseFloat(
         (state.machineCoinsAmount + coinValue).toFixed(2),
       );
-
       return {
         ...state,
         walletAmount: updatedWalletAmount,
-        machineCoinsAmount: updatedmachineCoinsAmount,
+        machineCoinsAmount: updatedMachineCoinsAmount,
         insertedCoins: [...state.insertedCoins, action.value],
         isDropZone: false,
       };

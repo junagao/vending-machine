@@ -4,9 +4,10 @@ import styled from 'styled-components';
 
 import {
   CoinSlot,
-  VendingMachineScreen,
-  CollectProduct,
+  DisplayDepositedAmount,
+  ProductList,
   CollectRefund,
+  CollectProduct,
 } from 'components';
 
 const VendingMachineContainer = styled.div`
@@ -33,11 +34,11 @@ const VendingMachine = ({
   machineCoinsAmount,
   products,
   onSelectProduct,
+  onCollectCoinRefund,
   selectedProductName,
   selectedProductImg,
   onCollectProduct,
   isCollected,
-  onCollectCoinRefund,
 }) => (
   <VendingMachineContainer>
     <CoinSlot
@@ -47,11 +48,8 @@ const VendingMachine = ({
       onDragLeave={onDragLeave}
       isDropZone={isDropZone}
     />
-    <VendingMachineScreen
-      machineCoinsAmount={machineCoinsAmount}
-      products={products}
-      onSelectProduct={onSelectProduct}
-    />
+    <DisplayDepositedAmount machineCoinsAmount={machineCoinsAmount} />
+    <ProductList products={products} onSelectProduct={onSelectProduct} />
     <CollectRefund
       onCollectCoinRefund={onCollectCoinRefund}
       machineCoinsAmount={machineCoinsAmount}

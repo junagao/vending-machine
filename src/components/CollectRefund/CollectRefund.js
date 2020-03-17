@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const CollectRefundContainer = styled.div`
@@ -10,7 +10,7 @@ const CollectRefundContainer = styled.div`
 const CollectRefundButton = styled.button`
   width: 4rem;
   height: 4rem;
-  color: #bbb;
+  color: #eee;
   border: 0;
   background-color: #333;
   border-radius: 0.25rem;
