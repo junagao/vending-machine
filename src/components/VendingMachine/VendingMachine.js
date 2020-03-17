@@ -34,6 +34,8 @@ const VendingMachine = ({
   onSelectProduct,
   selectedProductName,
   selectedProductImg,
+  onCollectProduct,
+  isCollected,
 }) => (
   <VendingMachineContainer>
     <CoinSlot
@@ -51,6 +53,8 @@ const VendingMachine = ({
     <CollectProductButton
       selectedProductName={selectedProductName}
       selectedProductImg={selectedProductImg}
+      onCollectProduct={onCollectProduct}
+      isCollected={isCollected}
     />
   </VendingMachineContainer>
 );
@@ -75,6 +79,8 @@ VendingMachine.propTypes = {
   onSelectProduct: PropTypes.func.isRequired,
   selectedProductName: PropTypes.string.isRequired,
   selectedProductImg: PropTypes.string.isRequired,
+  onCollectProduct: PropTypes.func.isRequired,
+  isCollected: PropTypes.bool.isRequired,
 };
 
 export default VendingMachine;
