@@ -14,6 +14,7 @@ import {
   selectProduct as selectProductAction,
   updateProductStock as updateProductStockAction,
   collectProduct as collectProductAction,
+  setIsProductCollected as setIsProductCollectedAction,
 } from 'actions/product';
 
 import { Header, VendingMachine, Wallet } from 'components';
@@ -108,6 +109,7 @@ class App extends React.Component {
       updateProductStock,
       products,
       updateInsertedCoinAmount,
+      setIsProductCollected,
     } = this.props;
 
     const selectedProductPrice = products.find((p) => p.id === id).price;
@@ -121,6 +123,7 @@ class App extends React.Component {
       selectProduct(name, img);
       updateProductStock(id, 1);
       updateInsertedCoinAmount(insertedCoinsAmount - selectedProductPrice);
+      setIsProductCollected(false);
     } else if (selectedProductStock === 0) {
       setCoinError(`Out of stock`);
       setTimeout(() => setCoinError(''), 2500);
@@ -140,8 +143,8 @@ class App extends React.Component {
       selectedProductName,
       selectedProductImg,
       products,
-      collectProduct,
       isCollected,
+      collectProduct,
     } = this.props;
 
     return (
@@ -205,6 +208,7 @@ App.propTypes = {
   updateInsertedCoinAmount: PropTypes.func.isRequired,
   collectProduct: PropTypes.func.isRequired,
   isCollected: PropTypes.bool.isRequired,
+  setIsProductCollected: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -228,6 +232,7 @@ const mapDispatchToProps = {
   updateProductStock: updateProductStockAction,
   updateInsertedCoinAmount: updateInsertedCoinAmountAction,
   collectProduct: collectProductAction,
+  setIsProductCollected: setIsProductCollectedAction,
 };
 
 export default hot(connect(mapStateToProps, mapDispatchToProps)(App));
