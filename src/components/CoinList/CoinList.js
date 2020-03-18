@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import { CoinItem } from 'components';
 
 const CoinListUl = styled.ul`
-  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
 `;
 
 const CoinList = ({
@@ -16,11 +17,13 @@ const CoinList = ({
   isDragging,
 }) => (
   <CoinListUl>
-    {coins.map(({ id, value }) => (
+    {coins.map(({ id, name, value, userQuantity }) => (
       <CoinItem
         key={id}
         id={id}
+        name={name}
         value={value}
+        userQuantity={userQuantity}
         onDragStart={onDragStart}
         onDragEnd={onDragEnd}
         onDragOver={onDragOver}
@@ -36,6 +39,7 @@ CoinList.propTypes = {
       id: PropTypes.string,
       name: PropTypes.string,
       value: PropTypes.number,
+      userQuantity: PropTypes.number.isRequired,
     }),
   ).isRequired,
   onDragStart: PropTypes.func.isRequired,

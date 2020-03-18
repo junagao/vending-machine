@@ -11,7 +11,6 @@ const products = [
     img: cocaColaImg,
     price: 1.25,
     currentStock: 10,
-    stockCapacity: 10,
   },
   {
     id: 'product-2',
@@ -19,7 +18,6 @@ const products = [
     img: cocaColaZeroImg,
     price: 1.25,
     currentStock: 10,
-    stockCapacity: 10,
   },
   {
     id: 'product-3',
@@ -27,7 +25,6 @@ const products = [
     img: spriteImg,
     price: 1.25,
     currentStock: 10,
-    stockCapacity: 10,
   },
   {
     id: 'product-4',
@@ -35,7 +32,6 @@ const products = [
     img: fantaImg,
     price: 1.25,
     currentStock: 10,
-    stockCapacity: 10,
   },
   {
     id: 'product-5',
@@ -43,7 +39,6 @@ const products = [
     img: fantaZeroImg,
     price: 1.25,
     currentStock: 10,
-    stockCapacity: 10,
   },
 ];
 

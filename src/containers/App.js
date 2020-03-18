@@ -41,18 +41,18 @@ const UserControls = styled.div`
 
 class App extends React.Component {
   componentDidMount() {
-    const { getCoins, getWalletAmount, getProducts } = this.props;
+    const { getCoins, getProducts } = this.props;
     getCoins();
-    getWalletAmount();
     getProducts();
   }
 
   onDrop = (e) => {
     const { walletAmount, insertCoin, setCoinError } = this.props;
     e.preventDefault();
-    const value = e.dataTransfer.getData('transfer');
+    const value = e.dataTransfer.getData('transfer value');
+    const coinId = e.dataTransfer.getData('transfer coin id');
     if (walletAmount > 0 && value <= walletAmount) {
-      insertCoin(value);
+      insertCoin(coinId, value);
     } else if (value > walletAmount && walletAmount > 0) {
       setCoinError(
         `You don't have enough cash to insert that coin. Try again.`,
@@ -71,7 +71,11 @@ class App extends React.Component {
 
   onDragStart = (e) => {
     const { setIsDraggingCoin } = this.props;
-    e.dataTransfer.setData('transfer', e.currentTarget.textContent);
+    e.dataTransfer.setData(
+      'transfer value',
+      e.currentTarget.getAttribute('value'),
+    );
+    e.dataTransfer.setData('transfer coin id', e.currentTarget.id);
     e.dataTransfer.dropEffect = 'move';
     setIsDraggingCoin();
   };
@@ -142,6 +146,7 @@ class App extends React.Component {
       collectProduct,
       collectCoinRefund,
       refillCoinsQuantity,
+      refillProductStock,
     } = this.props;
 
     return (
@@ -166,17 +171,18 @@ class App extends React.Component {
           />
           <UserControls>
             <Wallet
-              coins={coins}
               walletAmount={walletAmount}
+              coins={coins}
               onDragStart={this.onDragStart}
               onDragEnd={this.onDragEnd}
               onDragOver={this.noAllowDrop}
               isDragging={isDragging}
-              coinError={coinError}
             />
             <AdminControllers
               coins={coins}
               onRefillCoinsQuantity={refillCoinsQuantity}
+              products={products}
+              onRefillProductStock={refillProductStock}
             />
           </UserControls>
         </Main>
@@ -187,7 +193,6 @@ class App extends React.Component {
 
 App.propTypes = {
   getCoins: PropTypes.func.isRequired,
-  getWalletAmount: PropTypes.func.isRequired,
   getProducts: PropTypes.func.isRequired,
   coins: PropTypes.arrayOf(
     PropTypes.shape({
@@ -217,7 +222,6 @@ App.propTypes = {
       img: PropTypes.string,
       price: PropTypes.number,
       currentStock: PropTypes.number,
-      stockCapacity: PropTypes.number,
     }),
   ).isRequired,
   updateInsertedCoinAmount: PropTypes.func.isRequired,
@@ -226,6 +230,7 @@ App.propTypes = {
   setIsProductCollected: PropTypes.func.isRequired,
   collectCoinRefund: PropTypes.func.isRequired,
   refillCoinsQuantity: PropTypes.func.isRequired,
+  refillProductStock: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
