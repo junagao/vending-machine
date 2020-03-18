@@ -42,7 +42,7 @@ export default (state = initialState, action) => {
         (state.machineCoinsAmount + coinValue).toFixed(2),
       );
       const updatedCoins = state.coins.map((coin) =>
-        coin.id === action.id
+        coin.id === action.id && coin.userQuantity > 0
           ? {
               ...coin,
               machineQuantity: coin.machineQuantity + 1,

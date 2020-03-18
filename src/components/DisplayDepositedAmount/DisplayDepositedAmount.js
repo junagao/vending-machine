@@ -8,7 +8,7 @@ const DisplayAmount = styled.p`
   margin-bottom: 4rem;
   background-color: rgba(0, 0, 0, 0.75);
   padding: 1rem;
-  width: 6rem;
+  width: 6.25rem;
   border-radius: 0.25rem;
   color: #eee;
   text-align: right;

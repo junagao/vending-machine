@@ -17,15 +17,8 @@ import {
 
 const AppContainer = styled.div`
   margin: 0 auto;
-  max-width: 38rem;
-  padding: 0.5rem;
-
-  @media (min-width: 768px) {
-    max-width: 44rem;
-  }
-  @media (min-width: 1024px) {
-    max-width: 52rem;
-  }
+  max-width: 53rem;
+  margin-top: 1rem;
 `;
 
 const Main = styled.main`
@@ -47,16 +40,15 @@ class App extends React.Component {
   }
 
   onDrop = (e) => {
-    const { walletAmount, insertCoin, setCoinError } = this.props;
+    const { walletAmount, insertCoin, setCoinError, coins } = this.props;
     e.preventDefault();
-    const value = e.dataTransfer.getData('transfer value');
+    const coinValue = e.dataTransfer.getData('transfer value');
     const coinId = e.dataTransfer.getData('transfer coin id');
-    if (walletAmount > 0 && value <= walletAmount) {
-      insertCoin(coinId, value);
-    } else if (value > walletAmount && walletAmount > 0) {
-      setCoinError(
-        `You don't have enough cash to insert that coin. Try again.`,
-      );
+    const coinQuantity = coins.find((c) => coinId === c.id).userQuantity;
+    if (walletAmount > 0 && coinValue <= walletAmount && coinQuantity > 0) {
+      insertCoin(coinId, coinValue);
+    } else if (walletAmount > 0 && coinQuantity === 0) {
+      setCoinError(`You don't have enough of that coin. Try another.`);
       setTimeout(() => setCoinError(''), 2500);
     } else {
       setCoinError(`There is no money in your wallet. Withdraw some cash.`);
@@ -152,7 +144,7 @@ class App extends React.Component {
     return (
       <AppContainer>
         <ErrorMessage errorMessage={coinError} />
-        <Header />
+        <Header text="Vending Machine" fontSize="h1" />
         <Main>
           <VendingMachine
             onDrop={this.onDrop}
@@ -170,6 +162,7 @@ class App extends React.Component {
             onCollectCoinRefund={collectCoinRefund}
           />
           <UserControls>
+            <Header text="User" />
             <Wallet
               walletAmount={walletAmount}
               coins={coins}
@@ -178,6 +171,7 @@ class App extends React.Component {
               onDragOver={this.noAllowDrop}
               isDragging={isDragging}
             />
+            <Header text="Machine Admin" />
             <AdminControllers
               coins={coins}
               onRefillCoinsQuantity={refillCoinsQuantity}
