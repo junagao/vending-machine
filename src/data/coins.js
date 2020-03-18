@@ -3,7 +3,7 @@ const coins = [
     id: 'coin-1',
     name: '1 euro',
     value: 1,
-    userQuantity: 6,
+    userQuantity: 10,
     machineQuantity: 5,
   },
   {
