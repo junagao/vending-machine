@@ -77,7 +77,6 @@ VendingMachine.propTypes = {
       img: PropTypes.string,
       price: PropTypes.number,
       currentStock: PropTypes.number,
-      stockCapacity: PropTypes.number,
     }),
   ).isRequired,
   onSelectProduct: PropTypes.func.isRequired,

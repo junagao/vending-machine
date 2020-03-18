@@ -13,13 +13,14 @@ const ProductListUl = styled.ul`
 
 const ProductList = ({ products, onSelectProduct }) => (
   <ProductListUl>
-    {products.map(({ id, name, img, price }) => (
+    {products.map(({ id, name, img, price, currentStock }) => (
       <ProductItem
         key={id}
         id={id}
         name={name}
         img={img}
         price={price}
+        currentStock={currentStock}
         onSelectProduct={onSelectProduct}
       />
     ))}
@@ -34,7 +35,6 @@ ProductList.propTypes = {
       img: PropTypes.string,
       price: PropTypes.number,
       currentStock: PropTypes.number,
-      stockCapacity: PropTypes.number,
     }),
   ).isRequired,
   onSelectProduct: PropTypes.func.isRequired,

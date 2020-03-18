@@ -1,12 +1,12 @@
 import {
   GET_COINS,
-  GET_WALLET_AMOUNT,
   INSERT_COIN,
   SET_IS_DRAGGING_COIN,
   SET_IS_COIN_DROPZONE,
   SET_COIN_ERROR,
   UPDATE_INSERTED_COIN_AMOUNT,
   COLLECT_COIN_REFUND,
+  REFILL_COINS_QUANTITY,
 } from 'actions/types';
 
 const initialState = {
@@ -21,16 +21,18 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_COINS:
+    case GET_COINS: {
+      const calculatedWalletAmount = parseFloat(
+        action.coinsList
+          .map((coin) => parseFloat(coin.value) * coin.userQuantity)
+          .reduce((a, b) => a + b),
+      );
       return {
         ...state,
         coins: action.coinsList,
+        walletAmount: calculatedWalletAmount,
       };
-    case GET_WALLET_AMOUNT:
-      return {
-        ...state,
-        walletAmount: action.walletAmount,
-      };
+    }
     case INSERT_COIN: {
       const coinValue = parseFloat(action.value);
       const updatedWalletAmount = parseFloat(
@@ -39,12 +41,22 @@ export default (state = initialState, action) => {
       const updatedMachineCoinsAmount = parseFloat(
         (state.machineCoinsAmount + coinValue).toFixed(2),
       );
+      const updatedCoins = state.coins.map((coin) =>
+        coin.id === action.id
+          ? {
+              ...coin,
+              machineQuantity: coin.machineQuantity + 1,
+              userQuantity: coin.userQuantity - 1,
+            }
+          : coin,
+      );
       return {
         ...state,
         walletAmount: updatedWalletAmount,
         machineCoinsAmount: updatedMachineCoinsAmount,
         insertedCoins: [...state.insertedCoins, action.value],
         isDropZone: false,
+        coins: updatedCoins,
       };
     }
     case SET_IS_DRAGGING_COIN:
@@ -74,6 +86,17 @@ export default (state = initialState, action) => {
         machineCoinsAmount: state.machineCoinsAmount - action.value,
         walletAmount: state.walletAmount + action.value,
       };
+    case REFILL_COINS_QUANTITY: {
+      const updatedCoins = state.coins.map((coin) =>
+        coin.id === action.id
+          ? { ...coin, machineQuantity: coin.machineQuantity + action.quantity }
+          : coin,
+      );
+      return {
+        ...state,
+        coins: updatedCoins,
+      };
+    }
     default:
       return state;
   }

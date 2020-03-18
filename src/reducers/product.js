@@ -4,6 +4,7 @@ import {
   UPDATE_PRODUCT_STOCK,
   COLLECT_PRODUCT,
   SET_IS_PRODUCT_COLLECTED,
+  REFILL_PRODUCT_STOCK_QUANTITY,
 } from 'actions/types';
 
 const initialState = {
@@ -30,7 +31,7 @@ export default (state = initialState, action) => {
     case UPDATE_PRODUCT_STOCK: {
       const updatedProducts = state.products.map((product) =>
         product.id === action.id
-          ? { ...product, currentStock: product.currentStock - action.qtd }
+          ? { ...product, currentStock: product.currentStock - action.quantity }
           : product,
       );
       return {
@@ -49,6 +50,17 @@ export default (state = initialState, action) => {
         ...state,
         isCollected: action.bool,
       };
+    case REFILL_PRODUCT_STOCK_QUANTITY: {
+      const updatedProducts = state.products.map((product) =>
+        product.id === action.id
+          ? { ...product, currentStock: product.currentStock + action.quantity }
+          : product,
+      );
+      return {
+        ...state,
+        products: updatedProducts,
+      };
+    }
     default:
       return state;
   }

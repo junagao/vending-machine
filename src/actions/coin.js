@@ -1,28 +1,23 @@
 import {
   GET_COINS,
-  GET_WALLET_AMOUNT,
   INSERT_COIN,
   SET_IS_DRAGGING_COIN,
   SET_IS_COIN_DROPZONE,
   SET_COIN_ERROR,
   UPDATE_INSERTED_COIN_AMOUNT,
   COLLECT_COIN_REFUND,
+  REFILL_COINS_QUANTITY,
 } from 'actions/types';
 import coinsList from 'data/coins';
-import walletAmount from 'data/wallet';
 
 export const getCoins = () => ({
   type: GET_COINS,
   coinsList,
 });
 
-export const getWalletAmount = () => ({
-  type: GET_WALLET_AMOUNT,
-  walletAmount,
-});
-
-export const insertCoin = (value) => ({
+export const insertCoin = (id, value) => ({
   type: INSERT_COIN,
+  id,
   value,
 });
 
@@ -47,4 +42,10 @@ export const updateInsertedCoinAmount = (value) => ({
 export const collectCoinRefund = (value) => ({
   type: COLLECT_COIN_REFUND,
   value,
+});
+
+export const refillCoinsQuantity = (id, quantity) => ({
+  type: REFILL_COINS_QUANTITY,
+  id,
+  quantity,
 });

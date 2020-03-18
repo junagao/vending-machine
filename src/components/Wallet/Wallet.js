@@ -1,27 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
-import { CoinList } from 'components';
-
-const WalletContainer = styled.div`
-  width: 20rem;
-  height: min-content;
-  background-color: #ddd;
-  border-radius: 0.25rem;
-  margin-bottom: 10rem;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-`;
-
-const WalletAmount = styled.p`
-  font-size: 1.25rem;
-  font-weight: 500;
-`;
+import { CoinList, Card, CardTitle } from 'components';
 
 const Wallet = ({
   walletAmount,
@@ -31,8 +11,8 @@ const Wallet = ({
   onDragOver,
   isDragging,
 }) => (
-  <WalletContainer>
-    <WalletAmount>My wallet amount: {walletAmount} €</WalletAmount>
+  <Card>
+    <CardTitle>My wallet amount: {walletAmount} €</CardTitle>
     <CoinList
       coins={coins}
       onDragStart={onDragStart}
@@ -40,7 +20,7 @@ const Wallet = ({
       onDragOver={onDragOver}
       isDragging={isDragging}
     />
-  </WalletContainer>
+  </Card>
 );
 
 Wallet.propTypes = {

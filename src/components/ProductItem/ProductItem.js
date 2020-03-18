@@ -16,20 +16,32 @@ const ProductItemButton = styled.button`
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
 `;
 
-const ProductDetail = styled.p`
+const ProductPrice = styled.p`
   font-size: 0.85rem;
   font-weight: 600;
   margin-top: 0.25rem;
 `;
 
-const ProductItem = ({ id, name, img, price, onSelectProduct }) => (
+const ProductQuantity = styled.p`
+  color: #999;
+`;
+
+const ProductItem = ({
+  id,
+  name,
+  img,
+  price,
+  currentStock,
+  onSelectProduct,
+}) => (
   <ProductItemLi>
     <ProductItemButton
       onClick={() => onSelectProduct(name, img, id)}
       type="button"
     >
       <img width="46" src={img} alt={name} />
-      <ProductDetail>{price} €</ProductDetail>
+      <ProductPrice>{price} €</ProductPrice>
+      <ProductQuantity>{currentStock} unid.</ProductQuantity>
     </ProductItemButton>
   </ProductItemLi>
 );
@@ -39,6 +51,7 @@ ProductItem.propTypes = {
   name: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  currentStock: PropTypes.number.isRequired,
   onSelectProduct: PropTypes.func.isRequired,
 };
 
