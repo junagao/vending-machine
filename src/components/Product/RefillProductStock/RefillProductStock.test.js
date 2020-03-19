@@ -43,18 +43,11 @@ describe('RefillProductStock', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render one Card element', () => {
+  it('should render one Card element with prop `title` and `subtitle`', () => {
+    const titleMock = 'Refill machine products';
     expect(wrapper.find('Card').length).toEqual(1);
-  });
-
-  it('should render one CardTitle element with the title', () => {
-    expect(wrapper.find('CardTitle').length).toEqual(1);
-    expect(
-      wrapper
-        .find('CardTitle')
-        .children()
-        .text(),
-    ).toEqual(`Refill machine products (add 5 more)`);
+    expect(wrapper.find('Card').prop('title')).toEqual(titleMock);
+    expect(wrapper.find('Card').prop('subtitle')).toEqual(`(+5)`);
   });
 
   it('should render one RefillList element', () => {

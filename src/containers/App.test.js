@@ -9,7 +9,8 @@ import {
   Header,
   VendingMachine,
   Wallet,
-  AdminControllers,
+  RefillProductStock,
+  RefillCoins,
   ErrorMessage,
 } from 'components';
 
@@ -36,31 +37,39 @@ describe('App', () => {
     expect(wrapper.find('AppContainer').length).toEqual(1);
   });
 
-  it('should render one Error component', () => {
+  it('should render one instance of Error component', () => {
     expect(wrapper.find(ErrorMessage).length).toEqual(1);
   });
 
-  it('should render three Header components', () => {
-    expect(wrapper.find(Header).length).toEqual(3);
+  it('should render three instances of Header component', () => {
+    expect(wrapper.find(Header).length).toEqual(2);
   });
 
   it('should render one Main element', () => {
     expect(wrapper.find('Main').length).toEqual(1);
   });
 
-  it('should render one VendingMachine component', () => {
+  it('should render one instance of VendingMachine component', () => {
     expect(wrapper.find(VendingMachine).length).toEqual(1);
   });
 
-  it('should render one UserControls element', () => {
-    expect(wrapper.find('UserControls').length).toEqual(1);
+  it('should render one Controls element', () => {
+    expect(wrapper.find('Controls').length).toEqual(1);
   });
 
-  it('should render one Wallet component', () => {
+  it('should render one instance of Wallet component', () => {
     expect(wrapper.find(Wallet).length).toEqual(1);
   });
 
-  it('should render one AdminControllers component', () => {
-    expect(wrapper.find(AdminControllers).length).toEqual(1);
+  it('should render one MachineAdmin element', () => {
+    expect(wrapper.find('MachineAdmin').length).toEqual(1);
+  });
+
+  it('should render one instance of RefillProductStock component', () => {
+    expect(wrapper.find(RefillProductStock).length).toEqual(1);
+  });
+
+  it('should render one instance of RefillCoins component', () => {
+    expect(wrapper.find(RefillCoins).length).toEqual(1);
   });
 });

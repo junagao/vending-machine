@@ -1,7 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card should render correctly given the required props 1`] = `
-<CardContainer>
+<CardContainer
+  lastCard={true}
+>
+  <CardTitle>
+    Machine
+     
+    <CardSubtitle>
+      vending
+    </CardSubtitle>
+  </CardTitle>
   &lt;ChildComponent /&gt;
 </CardContainer>
 `;

@@ -1,12 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Wallet should render correctly given the required props 1`] = `
-<Card>
-  <CardTitle>
-    My wallet amount: 
-    21
-     €
-  </CardTitle>
+<Card
+  lastCard={false}
+  subtitle=""
+  title="My wallet amount: 21 €"
+>
   <CoinList
     coins={
       Array [

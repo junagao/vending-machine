@@ -5,10 +5,9 @@ import { Header } from 'components';
 describe('Header', () => {
   let wrapper;
   const textMock = 'Coca-cola Machine';
-  const fontSizeMock = 'p';
 
   beforeEach(() => {
-    wrapper = shallow(<Header text={textMock} fontSize={fontSizeMock} />);
+    wrapper = shallow(<Header text={textMock} main />);
   });
 
   it('should render correctly given the required props', () => {
@@ -28,8 +27,8 @@ describe('Header', () => {
     ).toEqual('Coca-cola Machine');
   });
 
-  it('should render one HeaderContainer element with the correct `fontSize` prop', () => {
+  it('should render one HeaderContainer element with the correct `main` prop', () => {
     expect(wrapper.find('HeaderContainer').length).toEqual(1);
-    expect(wrapper.find('HeaderContainer').prop('fontSize')).toEqual('p');
+    expect(wrapper.find('HeaderContainer').prop('main')).toBeTruthy();
   });
 });

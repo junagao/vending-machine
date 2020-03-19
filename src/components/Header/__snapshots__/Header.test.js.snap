@@ -2,7 +2,7 @@
 
 exports[`Header should render correctly given the required props 1`] = `
 <HeaderContainer
-  fontSize="p"
+  main={true}
 >
   Coca-cola Machine
 </HeaderContainer>

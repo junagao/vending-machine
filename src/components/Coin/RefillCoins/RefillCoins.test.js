@@ -36,18 +36,12 @@ describe('RefillCoins', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render one Card element', () => {
+  it('should render one Card element with prop `title` and `subtitle`', () => {
     expect(wrapper.find('Card').length).toEqual(1);
-  });
-
-  it('should render one CardTitle element with the title', () => {
-    expect(wrapper.find('CardTitle').length).toEqual(1);
-    expect(
-      wrapper
-        .find('CardTitle')
-        .children()
-        .text(),
-    ).toEqual(`Refill machine coins for change (add 5 more)`);
+    expect(wrapper.find('Card').prop('title')).toEqual(
+      `Refill machine coins for change`,
+    );
+    expect(wrapper.find('Card').prop('subtitle')).toEqual(`(+5)`);
   });
 
   it('should render one RefillCoinsList element', () => {

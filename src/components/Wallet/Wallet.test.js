@@ -40,33 +40,11 @@ describe('Wallet', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render one Card element', () => {
+  it('should render one Card element with `title` prop of `My wallet amount: 2 €`', () => {
     expect(wrapper.find('Card').length).toEqual(1);
-  });
-
-  it('should render one CardTitle element with the title', () => {
-    expect(wrapper.find('CardTitle').length).toEqual(1);
-    expect(
-      wrapper
-        .find('CardTitle')
-        .children()
-        .at(0)
-        .text(),
-    ).toEqual(`My wallet amount: `);
-    expect(
-      wrapper
-        .find('CardTitle')
-        .children()
-        .at(1)
-        .text(),
-    ).toEqual(`21`);
-    expect(
-      wrapper
-        .find('CardTitle')
-        .children()
-        .at(2)
-        .text(),
-    ).toEqual(` €`);
+    expect(wrapper.find('Card').prop('title')).toEqual(
+      `My wallet amount: ${walletAmountMock} €`,
+    );
   });
 
   it('should render two CoinList element', () => {

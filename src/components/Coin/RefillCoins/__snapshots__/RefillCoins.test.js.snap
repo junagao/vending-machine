@@ -1,10 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RefillCoins should render correctly given the required props 1`] = `
-<Card>
-  <CardTitle>
-    Refill machine coins for change (add 5 more)
-  </CardTitle>
+<Card
+  lastCard={true}
+  subtitle="(+5)"
+  title="Refill machine coins for change"
+>
   <RefillCoinsList>
     <RefillCoinsItem
       key="coin1"
