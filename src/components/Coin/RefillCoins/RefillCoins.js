@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Card, CardTitle, Button } from 'components';
+import { Card, Button } from 'components';
 
 const RefillCoinsList = styled.ul`
   display: flex;
@@ -16,8 +16,7 @@ const RefillCoinsItem = styled.li`
 `;
 
 const RefillCoins = ({ coins, onRefillCoinsQuantity }) => (
-  <Card>
-    <CardTitle>Refill machine coins for change (add 5 more)</CardTitle>
+  <Card title="Refill machine coins for change" subtitle="(+5)" lastCard>
     <RefillCoinsList>
       {coins.map(({ id, name }) => (
         <RefillCoinsItem key={id}>

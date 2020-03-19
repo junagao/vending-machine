@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { CoinList, Card, CardTitle } from 'components';
+import { CoinList, Card } from 'components';
 
 const Wallet = ({
   walletAmount,
@@ -11,8 +11,7 @@ const Wallet = ({
   onDragOver,
   isDragging,
 }) => (
-  <Card>
-    <CardTitle>My wallet amount: {walletAmount} €</CardTitle>
+  <Card title={`My wallet amount: ${walletAmount} €`}>
     <CoinList
       coins={coins}
       onDragStart={onDragStart}

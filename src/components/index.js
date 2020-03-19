@@ -18,8 +18,6 @@ export {
 export { default as VendingMachine } from 'components/VendingMachine';
 export { default as Wallet } from 'components/Wallet';
 export { default as Header } from 'components/Header';
-export { default as AdminControllers } from 'components/AdminControllers';
 export { default as ErrorMessage } from 'components/ErrorMessage';
 export { default as Card } from 'components/Card';
-export { default as CardTitle } from 'components/CardTitle';
 export { default as Button } from 'components/Button';
