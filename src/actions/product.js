@@ -25,9 +25,9 @@ export const updateProductStock = (id, quantity) => ({
   quantity,
 });
 
-export const collectProduct = (product) => ({
+export const collectProduct = (id) => ({
   type: COLLECT_PRODUCT,
-  product,
+  id,
 });
 
 export const setIsProductCollected = (bool) => ({
