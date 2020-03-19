@@ -15,8 +15,9 @@ const ErrorContainer = styled.div`
   transform: translateX(-50%);
 `;
 
-const ErrorMessage = ({ errorMessage }) =>
-  errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>;
+const ErrorMessage = ({ errorMessage }) => (
+  <ErrorContainer>{errorMessage}</ErrorContainer>
+);
 
 ErrorMessage.propTypes = {
   errorMessage: PropTypes.string.isRequired,

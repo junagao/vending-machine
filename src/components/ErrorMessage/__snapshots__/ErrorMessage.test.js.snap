@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorMessage should render correctly given the required props 1`] = `
+<ErrorContainer>
+  ERROR
+</ErrorContainer>
+`;
