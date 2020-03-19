@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RefillStock should render correctly given the required props 1`] = `
+exports[`RefillProductStock should render correctly given the required props 1`] = `
 <Card>
   <CardTitle>
     Refill machine products (add 5 more)

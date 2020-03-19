@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { RefillCoins, RefillStock } from 'components';
+import { RefillCoins, RefillProductStock } from 'components';
 
 const AdminControllers = ({
   coins,
@@ -11,7 +11,7 @@ const AdminControllers = ({
 }) => (
   <>
     <RefillCoins coins={coins} onRefillCoinsQuantity={onRefillCoinsQuantity} />
-    <RefillStock
+    <RefillProductStock
       products={products}
       onRefillProductStock={onRefillProductStock}
     />

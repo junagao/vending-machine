@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CoinList } from 'components';
+import { CoinList, CoinItem } from 'components';
 
 describe('CoinList', () => {
   let wrapper;
@@ -43,6 +43,6 @@ describe('CoinList', () => {
   });
 
   it('should render two instances of <CoinItem />', () => {
-    expect(wrapper.find('CoinItem').length).toEqual(2);
+    expect(wrapper.find(CoinItem).length).toEqual(2);
   });
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ProductList } from 'components';
+import { ProductList, ProductItem } from 'components';
 
 describe('ProductList', () => {
   let wrapper;
@@ -49,6 +49,6 @@ describe('ProductList', () => {
   });
 
   it('should render 3 instances of <ProductItem />', () => {
-    expect(wrapper.find('ProductItem').length).toEqual(3);
+    expect(wrapper.find(ProductItem).length).toEqual(3);
   });
 });

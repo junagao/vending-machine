@@ -15,7 +15,7 @@ const RefillItem = styled.li`
   margin-right: 0.25rem;
 `;
 
-const RefillStock = ({ products, onRefillProductStock }) => (
+const RefillProductStock = ({ products, onRefillProductStock }) => (
   <Card>
     <CardTitle>Refill machine products (add 5 more)</CardTitle>
     <RefillList>
@@ -28,7 +28,7 @@ const RefillStock = ({ products, onRefillProductStock }) => (
   </Card>
 );
 
-RefillStock.propTypes = {
+RefillProductStock.propTypes = {
   products: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -41,4 +41,4 @@ RefillStock.propTypes = {
   onRefillProductStock: PropTypes.func.isRequired,
 };
 
-export default RefillStock;
+export default RefillProductStock;

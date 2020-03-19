@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { AdminControllers, RefillCoins, RefillStock } from 'components';
+import { AdminControllers, RefillCoins, RefillProductStock } from 'components';
 
 describe('AdminControllers', () => {
   let wrapper;
@@ -47,6 +47,6 @@ describe('AdminControllers', () => {
   });
 
   it('should render one instance of <RefillStock />', () => {
-    expect(wrapper.find(RefillStock).length).toEqual(1);
+    expect(wrapper.find(RefillProductStock).length).toEqual(1);
   });
 });

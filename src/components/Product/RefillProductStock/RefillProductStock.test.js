@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { RefillStock } from 'components';
+import { RefillProductStock } from 'components';
 
-describe('RefillStock', () => {
+describe('RefillProductStock', () => {
   let wrapper;
   const productsMock = [
     {
@@ -32,7 +32,7 @@ describe('RefillStock', () => {
 
   beforeEach(() => {
     wrapper = shallow(
-      <RefillStock
+      <RefillProductStock
         products={productsMock}
         onRefillProductStock={onRefillProductStockMock}
       />,
