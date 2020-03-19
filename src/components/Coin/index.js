@@ -5,3 +5,4 @@ export { default as CollectChangeButton } from './CollectChangeButton';
 export { default as CollectRefund } from './CollectRefund';
 export { default as DisplayDepositedAmount } from './DisplayDepositedAmount';
 export { default as RefillCoins } from './RefillCoins';
+export { default as Wallet } from './Wallet';

@@ -6,6 +6,7 @@ export {
   CollectRefund,
   DisplayDepositedAmount,
   RefillCoins,
+  Wallet,
 } from 'components/Coin';
 
 export {
@@ -15,9 +16,8 @@ export {
   RefillProductStock,
 } from 'components/Product';
 
-export { default as VendingMachine } from 'components/VendingMachine';
-export { default as Wallet } from 'components/Wallet';
-export { default as Header } from 'components/Header';
-export { default as ErrorMessage } from 'components/ErrorMessage';
-export { default as Card } from 'components/Card';
 export { default as Button } from 'components/Button';
+export { default as Card } from 'components/Card';
+export { default as ErrorMessage } from 'components/ErrorMessage';
+export { default as Header } from 'components/Header';
+export { default as VendingMachine } from 'components/VendingMachine';
