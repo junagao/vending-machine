@@ -49,13 +49,19 @@ describe('RefillStock', () => {
 
   it('should render one CardTitle element with the title', () => {
     expect(wrapper.find('CardTitle').length).toEqual(1);
+    expect(
+      wrapper
+        .find('CardTitle')
+        .children()
+        .text(),
+    ).toEqual(`Refill machine products (add 5 more)`);
   });
 
-  it('should render one RefillList element with the title', () => {
+  it('should render one RefillList element', () => {
     expect(wrapper.find('RefillList').length).toEqual(1);
   });
 
-  it('should render three RefillItem element with the title', () => {
+  it('should render three RefillItem element', () => {
     expect(wrapper.find('RefillItem').length).toEqual(3);
   });
 
