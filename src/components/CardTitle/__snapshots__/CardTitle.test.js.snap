@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should render correctly given the required props 1`] = `
+<Title>
+  &lt;ChildComponent /&gt;
+</Title>
+`;
+
+exports[`CardTitle should render correctly given the required props 1`] = `
+<Title>
+  &lt;ChildComponent /&gt;
+</Title>
+`;
