@@ -143,7 +143,7 @@ class App extends React.Component {
 
     return (
       <AppContainer>
-        {coinError && <ErrorMessage errorMessage={coinError} />}
+        <ErrorMessage errorMessage={coinError} />
         <Header text="Vending Machine" fontSize="h1" />
         <Main>
           <VendingMachine
