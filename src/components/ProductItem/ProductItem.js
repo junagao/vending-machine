@@ -41,7 +41,9 @@ const ProductItem = ({
     >
       <img width="46" src={img} alt={name} />
       <ProductPrice>{price} €</ProductPrice>
-      <ProductQuantity>{currentStock} unid.</ProductQuantity>
+      <ProductQuantity>
+        {currentStock === 1 ? `${currentStock} unit` : `${currentStock} units`}
+      </ProductQuantity>
     </ProductItemButton>
   </ProductItemLi>
 );
