@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CoinItem should render correctly given the required props 1`] = `
+<CoinItemLi>
+  <CoinItemValue
+    draggable={true}
+    id="id-232"
+    isDragging={true}
+    onDragEnd={[MockFunction]}
+    onDragOver={[MockFunction]}
+    onDragStart={[MockFunction]}
+    value={3}
+  >
+    1 euro
+  </CoinItemValue>
+  <CoinItemQuantity>
+    3 units
+  </CoinItemQuantity>
+</CoinItemLi>
+`;

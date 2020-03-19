@@ -57,7 +57,9 @@ const CoinItem = ({
     >
       {name}
     </CoinItemValue>
-    <CoinItemQuantity>{userQuantity} unid.</CoinItemQuantity>
+    <CoinItemQuantity>
+      {userQuantity === 1 ? `${userQuantity} unit` : `${userQuantity} units`}
+    </CoinItemQuantity>
   </CoinItemLi>
 );
 
