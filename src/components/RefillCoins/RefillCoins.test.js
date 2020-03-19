@@ -42,13 +42,19 @@ describe('RefillCoins', () => {
 
   it('should render one CardTitle element with the title', () => {
     expect(wrapper.find('CardTitle').length).toEqual(1);
+    expect(
+      wrapper
+        .find('CardTitle')
+        .children()
+        .text(),
+    ).toEqual(`Refill machine coins for change (add 5 more)`);
   });
 
-  it('should render one RefillCoinsList element with the title', () => {
+  it('should render one RefillCoinsList element', () => {
     expect(wrapper.find('RefillCoinsList').length).toEqual(1);
   });
 
-  it('should render two RefillCoinsItem element with the title', () => {
+  it('should render two RefillCoinsItem element', () => {
     expect(wrapper.find('RefillCoinsItem').length).toEqual(2);
   });
 
