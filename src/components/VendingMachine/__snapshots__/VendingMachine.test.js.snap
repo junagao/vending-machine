@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VendingMachine should render correctly given the required props 1`] = `
+<VendingMachineContainer>
+  <CoinSlot
+    isDropZone={true}
+    onDragEnter={[MockFunction]}
+    onDragLeave={[MockFunction]}
+    onDragOver={[MockFunction]}
+    onDrop={[MockFunction]}
+  />
+  <DisplayDepositedAmount
+    machineCoinsAmount={10}
+  />
+  <ProductList
+    onSelectProduct={[MockFunction]}
+    products={
+      Array [
+        Object {
+          "currentStock": 10,
+          "id": "coke",
+          "img": "images/coke.png",
+          "name": "coke",
+          "price": 1,
+        },
+        Object {
+          "currentStock": 5,
+          "id": "sprite",
+          "img": "images/sprite.png",
+          "name": "sprite",
+          "price": 1.25,
+        },
+        Object {
+          "currentStock": 11,
+          "id": "fanta",
+          "img": "images/fanta.png",
+          "name": "fanta",
+          "price": 1.25,
+        },
+      ]
+    }
+  />
+  <CollectRefund
+    machineCoinsAmount={10}
+    onCollectCoinRefund={[MockFunction]}
+  />
+  <CollectProduct
+    isCollected={true}
+    onCollectProduct={[MockFunction]}
+    selectedProductImg="images/fanta.png"
+    selectedProductName="fanta"
+  />
+</VendingMachineContainer>
+`;
