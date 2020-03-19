@@ -18,7 +18,7 @@ describe('ErrorMessage', () => {
     expect(wrapper.find('ErrorContainer').length).toEqual(1);
   });
 
-  it('should render the error message', () => {
+  it('should render the error message if message exists', () => {
     expect(
       wrapper
         .find('ErrorContainer')
