@@ -7,8 +7,8 @@ describe('AdminControllers', () => {
   let wrapper;
 
   const coinsMock = [
-    { id: 'coin1', name: '2 euros', value: 2, quantity: 2 },
-    { id: 'coin2', name: '1 euro', value: 1, quantity: 10 },
+    { id: 'coin1', name: '2 euros', value: 2, userQuantity: 2 },
+    { id: 'coin2', name: '1 euro', value: 1, userQuantity: 10 },
   ];
   const productsMock = [
     {

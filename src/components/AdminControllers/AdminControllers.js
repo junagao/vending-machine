@@ -24,7 +24,7 @@ AdminControllers.propTypes = {
       id: PropTypes.string,
       name: PropTypes.string,
       value: PropTypes.number,
-      quantity: PropTypes.number,
+      userQuantity: PropTypes.number,
     }),
   ).isRequired,
   onRefillCoinsQuantity: PropTypes.func.isRequired,

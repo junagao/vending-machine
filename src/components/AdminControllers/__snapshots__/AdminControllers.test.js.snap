@@ -8,13 +8,13 @@ exports[`AdminControllers should render correctly given the required props 1`] =
         Object {
           "id": "coin1",
           "name": "2 euros",
-          "quantity": 2,
+          "userQuantity": 2,
           "value": 2,
         },
         Object {
           "id": "coin2",
           "name": "1 euro",
-          "quantity": 10,
+          "userQuantity": 10,
           "value": 1,
         },
       ]
