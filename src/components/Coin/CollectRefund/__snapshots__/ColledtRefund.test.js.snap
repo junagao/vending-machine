@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CollectRefund should render correctly given the required props 1`] = `
+<CollectRefundContainer>
+  <CollectRefundButton
+    onClick={[Function]}
+    type="button"
+  >
+    Collect Refund
+  </CollectRefundButton>
+</CollectRefundContainer>
+`;

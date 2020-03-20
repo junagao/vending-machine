@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RefillProductStock should render correctly given the required props 1`] = `
+<Card
+  lastCard={false}
+  subtitle="(+5)"
+  title="Refill machine products"
+>
+  <RefillList>
+    <RefillItem
+      key="coke"
+    >
+      <Button
+        handleClick={[Function]}
+        text="coke"
+      />
+    </RefillItem>
+    <RefillItem
+      key="sprite"
+    >
+      <Button
+        handleClick={[Function]}
+        text="sprite"
+      />
+    </RefillItem>
+    <RefillItem
+      key="fanta"
+    >
+      <Button
+        handleClick={[Function]}
+        text="fanta"
+      />
+    </RefillItem>
+  </RefillList>
+</Card>
+`;

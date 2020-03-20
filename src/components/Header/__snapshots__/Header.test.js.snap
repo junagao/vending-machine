@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render correctly given the required props 1`] = `
+<HeaderContainer
+  main={true}
+>
+  Coca-cola Machine
+</HeaderContainer>
+`;

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render correctly given the required props 1`] = `
+<ButtonContainer
+  onClick={[MockFunction]}
+  type="button"
+>
+  click here
+</ButtonContainer>
+`;

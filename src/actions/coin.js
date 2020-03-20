@@ -1,5 +1,5 @@
 import {
-  GET_COINS,
+  GET_COINS_AND_WALLET_AMOUNT,
   INSERT_COIN,
   SET_IS_DRAGGING_COIN,
   SET_IS_COIN_DROPZONE,
@@ -10,8 +10,8 @@ import {
 } from 'actions/types';
 import coinsList from 'data/coins';
 
-export const getCoins = () => ({
-  type: GET_COINS,
+export const getCoinsAndWallet = () => ({
+  type: GET_COINS_AND_WALLET_AMOUNT,
   coinsList,
 });
 
@@ -39,8 +39,9 @@ export const updateInsertedCoinAmount = (value) => ({
   value,
 });
 
-export const collectCoinRefund = (value) => ({
+export const collectCoinRefund = (id, value) => ({
   type: COLLECT_COIN_REFUND,
+  id,
   value,
 });
 

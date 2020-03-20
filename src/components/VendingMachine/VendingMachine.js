@@ -64,11 +64,11 @@ const VendingMachine = ({
 );
 
 VendingMachine.propTypes = {
-  isDropZone: PropTypes.bool.isRequired,
+  onDrop: PropTypes.func.isRequired,
+  onDragOver: PropTypes.func.isRequired,
   onDragEnter: PropTypes.func.isRequired,
   onDragLeave: PropTypes.func.isRequired,
-  onDragOver: PropTypes.func.isRequired,
-  onDrop: PropTypes.func.isRequired,
+  isDropZone: PropTypes.bool.isRequired,
   machineCoinsAmount: PropTypes.number.isRequired,
   products: PropTypes.arrayOf(
     PropTypes.shape({
@@ -83,8 +83,8 @@ VendingMachine.propTypes = {
   selectedProductName: PropTypes.string.isRequired,
   selectedProductImg: PropTypes.string.isRequired,
   onCollectProduct: PropTypes.func.isRequired,
-  isCollected: PropTypes.bool.isRequired,
   onCollectCoinRefund: PropTypes.func.isRequired,
+  isCollected: PropTypes.bool.isRequired,
 };
 
 export default VendingMachine;

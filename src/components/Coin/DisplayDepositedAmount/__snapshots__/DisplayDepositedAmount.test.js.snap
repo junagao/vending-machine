@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DisplayDepositedAmount should render correctly given the required props 1`] = `
+<DisplayAmount>
+  15
+   €
+</DisplayAmount>
+`;

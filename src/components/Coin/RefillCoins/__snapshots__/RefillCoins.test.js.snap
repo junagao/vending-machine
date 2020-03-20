@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RefillCoins should render correctly given the required props 1`] = `
+<Card
+  lastCard={true}
+  subtitle="(+5)"
+  title="Refill machine coins for change"
+>
+  <RefillCoinsList>
+    <RefillCoinsItem
+      key="coin1"
+    >
+      <Button
+        handleClick={[Function]}
+        text="2 euros"
+      />
+    </RefillCoinsItem>
+    <RefillCoinsItem
+      key="coin2"
+    >
+      <Button
+        handleClick={[Function]}
+        text="1 euro"
+      />
+    </RefillCoinsItem>
+  </RefillCoinsList>
+</Card>
+`;

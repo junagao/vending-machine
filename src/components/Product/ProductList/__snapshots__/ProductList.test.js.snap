@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductList should render correctly given the required props 1`] = `
+<ProductListUl>
+  <ProductItem
+    currentStock={10}
+    id="coke"
+    img="image/coke.png"
+    key="coke"
+    name="coke"
+    onSelectProduct={[MockFunction]}
+    price={1}
+  />
+  <ProductItem
+    currentStock={5}
+    id="sprite"
+    img="image/sprite.png"
+    key="sprite"
+    name="sprite"
+    onSelectProduct={[MockFunction]}
+    price={1.25}
+  />
+  <ProductItem
+    currentStock={11}
+    id="fanta"
+    img="image/fanta.png"
+    key="fanta"
+    name="fanta"
+    onSelectProduct={[MockFunction]}
+    price={1.25}
+  />
+</ProductListUl>
+`;

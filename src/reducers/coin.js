@@ -1,5 +1,6 @@
+/* eslint-disable no-param-reassign */
 import {
-  GET_COINS,
+  GET_COINS_AND_WALLET_AMOUNT,
   INSERT_COIN,
   SET_IS_DRAGGING_COIN,
   SET_IS_COIN_DROPZONE,
@@ -21,7 +22,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_COINS: {
+    case GET_COINS_AND_WALLET_AMOUNT: {
       const calculatedWalletAmount = parseFloat(
         action.coinsList
           .map((coin) => parseFloat(coin.value) * coin.userQuantity)

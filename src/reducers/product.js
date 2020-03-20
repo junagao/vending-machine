@@ -42,7 +42,7 @@ export default (state = initialState, action) => {
     case COLLECT_PRODUCT:
       return {
         ...state,
-        collectedProducts: [...state.collectedProducts, action.product],
+        collectedProducts: [...state.collectedProducts, action.id],
         isCollected: true,
       };
     case SET_IS_PRODUCT_COLLECTED:

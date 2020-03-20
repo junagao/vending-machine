@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CoinSlot should render correctly given the required props 1`] = `
+<CoinSlotContainer>
+  <InsertCoinInstruction>
+    Drag coin here &gt;
+  </InsertCoinInstruction>
+  <CoinSlotDispenser
+    id="coin-slot"
+    isDropZone={true}
+    onDragEnter={[MockFunction]}
+    onDragLeave={[MockFunction]}
+    onDragOver={[MockFunction]}
+    onDrop={[MockFunction]}
+  />
+</CoinSlotContainer>
+`;

@@ -11,7 +11,8 @@ import {
   Header,
   VendingMachine,
   Wallet,
-  AdminControllers,
+  RefillProductStock,
+  RefillCoins,
   ErrorMessage,
 } from 'components';
 
@@ -24,18 +25,25 @@ const AppContainer = styled.div`
 const Main = styled.main`
   display: flex;
   justify-content: center;
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
 `;
 
-const UserControls = styled.div`
+const Controls = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+`;
+
+const MachineAdmin = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 class App extends React.Component {
   componentDidMount() {
-    const { getCoins, getProducts } = this.props;
-    getCoins();
+    const { getCoinsAndWallet, getProducts } = this.props;
+    getCoinsAndWallet();
     getProducts();
   }
 
@@ -144,7 +152,7 @@ class App extends React.Component {
     return (
       <AppContainer>
         <ErrorMessage errorMessage={coinError} />
-        <Header text="Vending Machine" fontSize="h1" />
+        <Header text="Vending Machine" main />
         <Main>
           <VendingMachine
             onDrop={this.onDrop}
@@ -161,8 +169,7 @@ class App extends React.Component {
             isCollected={isCollected}
             onCollectCoinRefund={collectCoinRefund}
           />
-          <UserControls>
-            <Header text="User" />
+          <Controls>
             <Wallet
               walletAmount={walletAmount}
               coins={coins}
@@ -171,14 +178,18 @@ class App extends React.Component {
               onDragOver={this.noAllowDrop}
               isDragging={isDragging}
             />
-            <Header text="Machine Admin" />
-            <AdminControllers
-              coins={coins}
-              onRefillCoinsQuantity={refillCoinsQuantity}
-              products={products}
-              onRefillProductStock={refillProductStock}
-            />
-          </UserControls>
+            <MachineAdmin>
+              <Header text="Machine Admin" />
+              <RefillProductStock
+                products={products}
+                onRefillProductStock={refillProductStock}
+              />
+              <RefillCoins
+                coins={coins}
+                onRefillCoinsQuantity={refillCoinsQuantity}
+              />
+            </MachineAdmin>
+          </Controls>
         </Main>
       </AppContainer>
     );
@@ -186,14 +197,15 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  getCoins: PropTypes.func.isRequired,
+  getCoinsAndWallet: PropTypes.func.isRequired,
   getProducts: PropTypes.func.isRequired,
   coins: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
       name: PropTypes.string,
       value: PropTypes.number,
-      quantity: PropTypes.number,
+      userQuantity: PropTypes.number,
+      machineQuantity: PropTypes.number,
     }),
   ).isRequired,
   insertCoin: PropTypes.func.isRequired,

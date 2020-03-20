@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Wallet should render correctly given the required props 1`] = `
+<Card
+  lastCard={false}
+  subtitle=""
+  title="My wallet amount: 21 €"
+>
+  <CoinList
+    coins={
+      Array [
+        Object {
+          "id": "coin1",
+          "machineQuantity": 2,
+          "name": "2 euros",
+          "userQuantity": 10,
+          "value": 2,
+        },
+        Object {
+          "id": "coin2",
+          "machineQuantity": 3,
+          "name": "1 euro",
+          "userQuantity": 5,
+          "value": 1,
+        },
+      ]
+    }
+    isDragging={true}
+    onDragEnd={[MockFunction]}
+    onDragOver={[MockFunction]}
+    onDragStart={[MockFunction]}
+  />
+</Card>
+`;
