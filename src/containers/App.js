@@ -42,8 +42,8 @@ const MachineAdmin = styled.div`
 
 class App extends React.Component {
   componentDidMount() {
-    const { getCoins, getProducts } = this.props;
-    getCoins();
+    const { getCoinsAndWallet, getProducts } = this.props;
+    getCoinsAndWallet();
     getProducts();
   }
 
@@ -197,7 +197,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  getCoins: PropTypes.func.isRequired,
+  getCoinsAndWallet: PropTypes.func.isRequired,
   getProducts: PropTypes.func.isRequired,
   coins: PropTypes.arrayOf(
     PropTypes.shape({

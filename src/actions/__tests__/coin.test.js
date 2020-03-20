@@ -1,6 +1,6 @@
 import * as actions from 'actions/coin';
 import {
-  GET_COINS,
+  GET_COINS_AND_WALLET_AMOUNT,
   INSERT_COIN,
   SET_IS_DRAGGING_COIN,
   SET_IS_COIN_DROPZONE,
@@ -18,13 +18,13 @@ describe('coin actions', () => {
 
   describe('getCoins', () => {
     it('has the correct type', () => {
-      const action = actions.getCoins();
+      const action = actions.getCoinsAndWallet();
 
-      expect(action.type).toEqual(GET_COINS);
+      expect(action.type).toEqual(GET_COINS_AND_WALLET_AMOUNT);
     });
 
     it('had the correct payload', () => {
-      const action = actions.getCoins();
+      const action = actions.getCoinsAndWallet();
 
       expect(action.payload).toEqual();
     });
