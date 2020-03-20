@@ -1,6 +1,6 @@
-# vending machine
+# Vending Machine
 
-This is a React Vending Machine app that handles a real world vending machine operation. Insert coins, select a product, collect the product from the tray, refund inserted coins. Also simulate the administrative side of the machine to restock products and restock coins.
+This is a React Vending Machine app that handles operations of a real world vending machine. Insert coins, select a product, collect the product from the tray, refund inserted coins. Ita lso simulates the administrative side of the machine restocking products and coins.
 
 ## 👀 Preview
 
