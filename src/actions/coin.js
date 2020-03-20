@@ -39,9 +39,8 @@ export const updateInsertedCoinAmount = (value) => ({
   value,
 });
 
-export const collectCoinRefund = (id, value) => ({
+export const collectCoinRefund = (value) => ({
   type: COLLECT_COIN_REFUND,
-  id,
   value,
 });
 

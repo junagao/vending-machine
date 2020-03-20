@@ -51,11 +51,16 @@ export default (state = initialState, action) => {
             }
           : coin,
       );
+
+      const updatedInsertedCoin = updatedCoins.find(
+        (coin) => coin.id === action.id,
+      );
+
       return {
         ...state,
         walletAmount: updatedWalletAmount,
         machineCoinsAmount: updatedMachineCoinsAmount,
-        insertedCoins: [...state.insertedCoins, action.value],
+        insertedCoins: [...state.insertedCoins, updatedInsertedCoin],
         isDropZone: false,
         coins: updatedCoins,
       };
@@ -81,12 +86,30 @@ export default (state = initialState, action) => {
         ...state,
         machineCoinsAmount: action.value,
       };
-    case COLLECT_COIN_REFUND:
+    case COLLECT_COIN_REFUND: {
+      const updatedCoins = state.coins.map((coin) => {
+        state.insertedCoins.map((c) => {
+          if (c.id === coin.id) {
+            coin.userQuantity += 1;
+            coin.machineQuantity -= 1;
+            return {
+              ...coin,
+              userQuantity: coin.userQuantity,
+              machineQuantity: coin.machineQuantity,
+            };
+          }
+          return { ...coin };
+        });
+        return coin;
+      });
       return {
         ...state,
         machineCoinsAmount: state.machineCoinsAmount - action.value,
         walletAmount: state.walletAmount + action.value,
+        insertedCoins: [],
+        coins: updatedCoins,
       };
+    }
     case REFILL_COINS_QUANTITY: {
       const updatedCoins = state.coins.map((coin) =>
         coin.id === action.id

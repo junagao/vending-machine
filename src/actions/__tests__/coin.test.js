@@ -109,9 +109,8 @@ describe('coin actions', () => {
     });
 
     it('had the correct payload', () => {
-      const action = actions.collectCoinRefund(idMock, valueMock);
+      const action = actions.collectCoinRefund(valueMock);
 
-      expect(action.id).toEqual(idMock);
       expect(action.value).toEqual(valueMock);
     });
   });
