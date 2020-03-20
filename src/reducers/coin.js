@@ -51,11 +51,16 @@ export default (state = initialState, action) => {
             }
           : coin,
       );
+
+      const updatedInsertedCoin = updatedCoins.find(
+        (coin) => coin.id === action.id,
+      );
+
       return {
         ...state,
         walletAmount: updatedWalletAmount,
         machineCoinsAmount: updatedMachineCoinsAmount,
-        insertedCoins: [...state.insertedCoins, action.value],
+        insertedCoins: [...state.insertedCoins, updatedInsertedCoin],
         isDropZone: false,
         coins: updatedCoins,
       };

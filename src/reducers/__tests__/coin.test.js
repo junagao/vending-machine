@@ -94,7 +94,7 @@ describe('coin reducer', () => {
       (initialState.machineCoinsAmount + coinValueMock).toFixed(2),
     );
     const updatedCoinsMock = initialState.coins.map((coin) =>
-      coin.id === action.id && coin.userQuantity > 0
+      coin.id === idMock && coin.userQuantity > 0
         ? {
             ...coin,
             machineQuantity: coin.machineQuantity + 1,
@@ -103,11 +103,15 @@ describe('coin reducer', () => {
         : coin,
     );
 
+    const updatedInsertedCoinMock = initialState.coins.find(
+      (coin) => coin.id === idMock,
+    );
+
     const expectedState = {
       coins: updatedCoinsMock,
       walletAmount: updatedWalletAmountMock,
       machineCoinsAmount: updatedMachineCoinsAmountMock,
-      insertedCoins: [{ id: idMock, value: coinValueMock }],
+      insertedCoins: [updatedInsertedCoinMock],
       isDragging: false,
       isDropZone: false,
       coinError: '',
