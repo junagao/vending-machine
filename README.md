@@ -4,6 +4,8 @@ This is a React Vending Machine app that handles operations of a real world vend
 
 ## 👀 Preview
 
+https://vending-machine-app.netlify.com/
+
 ![vending-machine-png](./src/images/vending-machine-preview.png)
 
 ## 🚀 Quick start
