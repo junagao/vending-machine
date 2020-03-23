@@ -11,7 +11,7 @@ const Wallet = ({
   onDragOver,
   isDragging,
 }) => (
-  <Card title={`My wallet amount: ${walletAmount} €`}>
+  <Card title={`My wallet: ${walletAmount} €`}>
     <CoinList
       coins={coins}
       onDragStart={onDragStart}

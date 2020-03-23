@@ -3,12 +3,18 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const CollectProductContainer = styled.div`
-  width: 28rem;
+  min-width: 10.5rem;
   height: 4rem;
   background-color: #333;
   border-radius: 0.25rem;
   align-self: flex-end;
   text-align: center;
+  @media (min-width: 640px) {
+    min-width: 19rem;
+  }
+  @media (min-width: 1024px) {
+    min-width: 28rem;
+  }
 `;
 
 const ProductImg = styled.img`

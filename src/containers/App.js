@@ -18,8 +18,17 @@ import {
 
 const AppContainer = styled.div`
   margin: 0 auto;
-  max-width: 53rem;
+  max-width: 20rem;
   margin-top: 1rem;
+  @media (min-width: 640px) {
+    max-width: 38rem;
+  }
+  @media (min-width: 768px) {
+    max-width: 44rem;
+  }
+  @media (min-width: 1024px) {
+    max-width: 53rem;
+  }
 `;
 
 const Main = styled.main`
@@ -32,6 +41,13 @@ const Controls = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: 6rem;
+  @media (min-width: 640px) {
+    max-width: 16rem;
+  }
+  @media (min-width: 768px) {
+    max-width: 22rem;
+  }
 `;
 
 const MachineAdmin = styled.div`

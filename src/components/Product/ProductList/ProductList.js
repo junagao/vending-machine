@@ -6,9 +6,23 @@ import { ProductItem } from 'components';
 
 const ProductListUl = styled.ul`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
-  width: 28rem;
+  align-items: flex-end;
+  min-width: 10.5rem;
+  min-height: 28rem;
+  margin: 1rem 0rem;
+  @media (min-width: 640px) {
+    min-width: 10.5rem;
+  }
+  @media (min-width: 768px) {
+    min-width: 19rem;
+  }
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    min-width: 28rem;
+    min-height: 1rem;
+  }
 `;
 
 const ProductList = ({ products, onSelectProduct }) => (

@@ -11,8 +11,8 @@ import {
 } from 'components';
 
 const VendingMachineContainer = styled.div`
-  width: 30rem;
-  height: 42rem;
+  max-width: 12.5rem;
+  max-height: 54rem;
   background-color: #cf0f1c;
   border-radius: 0.5rem;
   display: flex;
@@ -23,6 +23,23 @@ const VendingMachineContainer = styled.div`
   margin-right: 1rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  @media (min-width: 640px) {
+    min-width: 21rem;
+    min-height: 58rem;
+  }
+  @media (min-width: 768px) {
+    min-height: 56rem;
+  }
+  @media (min-width: 1024px) {
+    max-width: 30rem;
+    min-height: 42rem;
+  }
+  @media (min-width: 1440px) {
+    min-height: 48rem;
+  }
+  @media (min-width: 1920px) {
+    min-height: 52rem;
+  }
 `;
 
 const VendingMachine = ({

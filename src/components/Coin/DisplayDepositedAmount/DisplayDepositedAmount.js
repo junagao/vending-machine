@@ -5,7 +5,6 @@ import styled from 'styled-components';
 const DisplayAmount = styled.p`
   font-size: 1.25rem;
   font-weight: 500;
-  margin-bottom: 4rem;
   background-color: rgba(0, 0, 0, 0.75);
   padding: 1rem;
   width: 6.25rem;
