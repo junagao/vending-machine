@@ -34,12 +34,6 @@ const VendingMachineContainer = styled.div`
     max-width: 30rem;
     min-height: 42rem;
   }
-  @media (min-width: 1440px) {
-    min-height: 42rem;
-  }
-  @media (min-width: 1920px) {
-    min-height: 50rem;
-  }
 `;
 
 const VendingMachine = ({

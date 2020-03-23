@@ -18,7 +18,7 @@ const ProductItemButton = styled.button`
     flex-direction: row;
   }
   @media (min-width: 1024px) {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     flex-direction: column;
   }
 `;

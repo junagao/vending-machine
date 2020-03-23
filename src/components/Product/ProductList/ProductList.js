@@ -22,6 +22,7 @@ const ProductListUl = styled.ul`
     flex-direction: row;
     min-width: 28rem;
     min-height: 1rem;
+    margin: 4rem 0rem;
   }
 `;
 
