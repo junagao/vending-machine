@@ -40,10 +40,10 @@ describe('Wallet', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render one Card element with `title` prop of `My wallet amount: 2 €`', () => {
+  it('should render one Card element with `title` prop of `My wallet: 2 €`', () => {
     expect(wrapper.find('Card').length).toEqual(1);
     expect(wrapper.find('Card').prop('title')).toEqual(
-      `My wallet amount: ${walletAmountMock} €`,
+      `My wallet: ${walletAmountMock} €`,
     );
   });
 

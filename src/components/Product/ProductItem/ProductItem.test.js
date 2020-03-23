@@ -28,8 +28,8 @@ describe('ProductItem', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render one li ProductItemLi element', () => {
-    expect(wrapper.find('ProductItemLi').length).toEqual(1);
+  it('should render one li element', () => {
+    expect(wrapper.find('li').length).toEqual(1);
   });
 
   it('should render one ProductItemButton element of type `button`', () => {
@@ -47,13 +47,13 @@ describe('ProductItem', () => {
     expect(onSelectProductMock.mock.calls.length).toEqual(1);
   });
 
-  it('should render one img element with the correct `src, width, alt` props', () => {
-    expect(wrapper.find('img').length).toEqual(1);
-    expect(wrapper.find('img').prop('src')).toEqual(
+  it('should render one ProductImg element with the correct `src, width, alt` props', () => {
+    expect(wrapper.find('ProductImg').length).toEqual(1);
+    expect(wrapper.find('ProductImg').prop('src')).toEqual(
       `http://vendingmachine.com/coke.png`,
     );
-    expect(wrapper.find('img').prop('width')).toEqual(`46`);
-    expect(wrapper.find('img').prop('alt')).toEqual(`coca cola`);
+    expect(wrapper.find('ProductImg').prop('width')).toEqual(`46`);
+    expect(wrapper.find('ProductImg').prop('alt')).toEqual(`coca cola`);
   });
 
   it('should render one ProductPrice p element with the price`', () => {

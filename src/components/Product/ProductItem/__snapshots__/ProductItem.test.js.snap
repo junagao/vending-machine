@@ -1,23 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductItem should render correctly given the required props 1`] = `
-<ProductItemLi>
+<li>
   <ProductItemButton
     onClick={[Function]}
     type="button"
   >
-    <img
+    <ProductImg
       alt="coca cola"
       src="http://vendingmachine.com/coke.png"
       width="46"
     />
-    <ProductPrice>
-      20
-       €
-    </ProductPrice>
-    <ProductQuantity>
-      7 units
-    </ProductQuantity>
+    <ProductDetails>
+      <ProductPrice>
+        20
+         €
+      </ProductPrice>
+      <ProductQuantity>
+        7 units
+      </ProductQuantity>
+    </ProductDetails>
   </ProductItemButton>
-</ProductItemLi>
+</li>
 `;
