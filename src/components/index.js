@@ -2,7 +2,6 @@ export {
   CoinItem,
   CoinList,
   CoinSlot,
-  CollectChangeButton,
   CollectRefund,
   DisplayDepositedAmount,
   RefillCoins,
