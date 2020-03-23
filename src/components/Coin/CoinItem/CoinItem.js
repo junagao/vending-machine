@@ -7,6 +7,10 @@ const CoinItemLi = styled.li`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 0.5rem;
+  @media (min-width: 640px) {
+    margin-bottom: 0;
+  }
 `;
 
 const CoinItemValue = styled.p`

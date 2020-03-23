@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CardContainer = styled.div`
-  width: 22rem;
   height: min-content;
   background-color: #ddd;
   border-radius: 0.25rem;
@@ -11,6 +10,7 @@ const CardContainer = styled.div`
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: flex-start;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -18,9 +18,12 @@ const CardContainer = styled.div`
 
 const CardTitle = styled.p`
   color: #444;
-  font-size: 1.15rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
   font-weight: 500;
+  @media (min-width: 640px) {
+    font-size: 1.15rem;
+  }
 `;
 
 const CardSubtitle = styled.span`

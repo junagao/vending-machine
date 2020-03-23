@@ -7,6 +7,8 @@ import { CoinItem } from 'components';
 const CoinListUl = styled.ul`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const CoinList = ({
